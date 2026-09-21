@@ -3,47 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="aicode —— 基于 Go + Vue 3 的轻量级 AI 任务批处理系统：项目管理、单任务串行调度、codetools 引擎实例、SSE 实时输出、多代理自动切换、代码图谱与容器构建。" data-i18n-attr="content:meta.description">
-<meta name="keywords" content="aicode,AI 任务批处理,codetools,opencode,Go,Vue3,代码图谱,容器构建" data-i18n-attr="content:meta.keywords">
+<meta name="description" content="aicode — a lightweight AI task batch system on Go + Vue 3: projects, serial task scheduling, codetools engine instances, real-time SSE output, automatic multi-proxy failover, code graph and container builds." data-i18n-attr="content:meta.description">
+<meta name="keywords" content="aicode,AI task batch,codetools,opencode,Go,Vue3,code graph,container build" data-i18n-attr="content:meta.keywords">
 <meta name="author" content="aicode" data-i18n-attr="content:meta.author">
 <meta name="theme-color" content="#0b1020">
 <meta property="og:type" content="website">
-<meta property="og:title" content="aicode · AI 任务批处理系统" data-i18n-attr="content:meta.ogtitle">
-<meta property="og:description" content="把「提示词 + 项目目录」变成可编排执行的任务队列（单任务串行），实时观看 AI 输出，自动存档会话。" data-i18n-attr="content:meta.ogdesc">
-<title data-i18n="meta.title">aicode · AI 任务批处理系统</title>
+<meta property="og:title" content="aicode · AI Task Batch System" data-i18n-attr="content:meta.ogtitle">
+<meta property="og:description" content="Turn “prompt + project directory” into an orchestrated task queue (serial), watch AI output live and auto-archive sessions." data-i18n-attr="content:meta.ogdesc">
+<title data-i18n="meta.title">aicode · AI Task Batch System</title>
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<a class="skip-link" href="#main" data-i18n="a11y.skip">跳到主要内容</a>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
 
 <!-- ================= 顶部导航 ================= -->
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
-    <a class="brand" href="#top" aria-label="aicode 首页" data-i18n-attr="aria-label:brand.home">
+    <a class="brand" href="#top" aria-label="aicode home" data-i18n-attr="aria-label:brand.home">
       <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
       <span class="brand-text">
         <strong>aicode</strong>
       </span>
     </a>
 
-    <nav class="nav" id="primaryNav" aria-label="主导航" data-i18n-attr="aria-label:nav.aria">
-      <a href="#features" data-i18n="nav.features">功能特性</a>
-      <a href="#workflow" data-i18n="nav.workflow">工作流程</a>
-      <a href="#architecture" data-i18n="nav.architecture">系统架构</a>
-      <a href="#quickstart" data-i18n="nav.quickstart">快速开始</a>
+    <nav class="nav" id="primaryNav" aria-label="Main navigation" data-i18n-attr="aria-label:nav.aria">
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+      <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
+      <a href="#quickstart" data-i18n="nav.quickstart">Quick Start</a>
       <a href="#api" data-i18n="nav.api">API</a>
-      <a href="#faq" data-i18n="nav.faq">常见问题</a>
-      <a class="nav-cta" href="#quickstart" data-i18n="nav.cta">立即开始</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a class="nav-cta" href="#quickstart" data-i18n="nav.cta">Get Started</a>
     </nav>
 
     <div class="header-actions">
-      <button class="lang-btn" id="langToggle" type="button" title="切换语言：中文 / English" aria-label="切换语言" data-i18n-attr="title:lang.title,aria-label:lang.title">中文</button>
-      <button class="icon-btn" id="themeToggle" type="button" title="切换浅色 / 深色主题" aria-label="切换主题" data-i18n-attr="title:a11y.theme,aria-label:a11y.themeAria">
+      <button class="lang-btn" id="langToggle" type="button" title="Switch language: 中文 / English" aria-label="Switch language: 中文 / English" data-i18n-attr="title:lang.title,aria-label:lang.title">中文</button>
+      <button class="icon-btn" id="themeToggle" type="button" title="Toggle light / dark theme" aria-label="Toggle theme" data-i18n-attr="title:a11y.theme,aria-label:a11y.themeAria">
         <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.6v3M12 18.4v3M2.6 12h3M18.4 12h3M5.4 5.4l2.1 2.1M16.5 16.5l2.1 2.1M18.6 5.4l-2.1 2.1M7.5 16.5l-2.1 2.1"/></g></svg>
         <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.4 8.4 0 1 1 9.4 4a6.8 6.8 0 0 0 10.6 10.6z"/></svg>
       </button>
-      <button class="icon-btn nav-burger" id="navBurger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="展开菜单" data-i18n-attr="aria-label:a11y.menuOpen">
+      <button class="icon-btn nav-burger" id="navBurger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu" data-i18n-attr="aria-label:a11y.menuOpen">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -58,29 +58,25 @@
   <div class="container hero-inner">
     <div class="hero-copy reveal">
       <span class="pill"><i class="dot"></i> Go 1.23 · Vue 3 · bbolt · SSE</span>
-      <h1 data-i18n-html="hero.title">
-        把 AI 编码变成<br>
-        <span class="grad">可编排、可观测、可回溯</span><br>
-        的任务流水线
-      </h1>
-      <p class="lede" data-i18n-html="hero.lede">
-        <strong>aicode</strong> 是一个轻量级 AI 任务批处理系统。它在 Web 上管理
-        <em>项目</em>、<em>任务分组</em> 与 <em>任务</em>，把「提示词 + 项目目录」组织成任务队列，
-        并行在 <em>codetools</em>（Go 版 opencode 重写）引擎上创建会话、发送提示词，
-        并在浏览器里实时观看 AI 输出，任务完成自动导出 Markdown 会话存档。
-      </p>
+      <h1 data-i18n-html="hero.title">Turn AI coding into<br>
+        <span class="grad">orchestrated, observable, traceable</span><br>
+        task pipelines</h1>
+      <p class="lede" data-i18n-html="hero.lede"><strong>aicode</strong> is a lightweight AI task batch system. It manages <em>projects</em>,
+        <em>task groups</em> and <em>tasks</em> on the web, turning “prompt + project directory” into a task queue,
+        creating sessions and sending prompts on the <em>codetools</em> (Go rewrite of opencode) engine,
+        streaming AI output live in the browser, and auto-exporting Markdown session archives when tasks finish.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#quickstart">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5 15.5 12 8 18.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-i18n="hero.cta.primary">快速开始</span>
+          <span data-i18n="hero.cta.primary">Get Started</span>
         </a>
-        <a class="btn btn-ghost" href="#features" data-i18n="hero.cta.features">浏览功能特性</a>
-        <a class="btn btn-ghost" href="../../README.md" data-i18n="hero.cta.readme">项目 README</a>
+        <a class="btn btn-ghost" href="#features" data-i18n="hero.cta.features">Browse Features</a>
+        <a class="btn btn-ghost" href="../../README.md" data-i18n="hero.cta.readme">Project README</a>
       </div>
       <ul class="hero-facts">
-        <li data-i18n-html="hero.facts.1"><b>1</b><span>项目目录 = 1 个独立引擎实例</span></li>
-        <li data-i18n-html="hero.facts.2"><b>1</b><span>任务串行（同一时间只跑 1 个）</span></li>
-        <li data-i18n-html="hero.facts.3"><b>SSE</b><span>文本 / 工具调用 / 推理过程实时流</span></li>
+        <li data-i18n-html="hero.facts.1"><b>1</b><span>Project dir = 1 dedicated engine instance</span></li>
+        <li data-i18n-html="hero.facts.2"><b>1</b><span>Tasks run serially (one at a time)</span></li>
+        <li data-i18n-html="hero.facts.3"><b>SSE</b><span>Live stream of text / tool calls / reasoning</span></li>
       </ul>
     </div>
 
@@ -89,36 +85,36 @@
       <div class="window">
         <div class="window-bar">
           <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-          <span class="window-title" data-i18n="hero.window.title">aicode · 任务执行</span>
+          <span class="window-title" data-i18n="hero.window.title">aicode · Task execution</span>
           <span class="window-chips"><i>concurrency=4</i><i>SSE</i></span>
         </div>
         <div class="window-body">
           <div class="task-row">
             <span class="badge ok">RUNNING</span>
-            <span class="task-name" data-i18n="hero.task.running">生成 API 文档</span>
+            <span class="task-name" data-i18n="hero.task.running">Generate API docs</span>
             <span class="task-meta">project/myapp</span>
             <span class="task-bar"><i style="width:72%"></i></span>
           </div>
           <div class="task-row">
             <span class="badge wait">QUEUE</span>
-            <span class="task-name" data-i18n="hero.task.queued">补充单元测试</span>
-            <span class="task-meta" data-i18n="hero.task.queued.meta">group: 后端</span>
+            <span class="task-name" data-i18n="hero.task.queued">Add unit tests</span>
+            <span class="task-meta" data-i18n="hero.task.queued.meta">group: backend</span>
             <span class="task-bar"><i style="width:18%"></i></span>
           </div>
           <div class="task-row">
             <span class="badge done">DONE</span>
-            <span class="task-name" data-i18n="hero.task.done">重构分块索引</span>
+            <span class="task-name" data-i18n="hero.task.done">Refactor chunk index</span>
             <span class="task-meta">session/*.md</span>
             <span class="task-bar"><i style="width:100%"></i></span>
           </div>
           <div class="term">
             <p><span class="t-dim">$</span> aicode serve <span class="t-dim">--project</span> /work/myapp</p>
             <p><span class="t-ok">✓</span> instance ready <span class="t-dim">port 1002</span></p>
-            <p data-i18n-html="hero.term.prompt"><span class="t-dim">→</span> prompt 已提交，等待首条回复…</p>
-            <p data-i18n-html="hero.term.read"><span class="t-accent">⏺</span> 读取 prog/lai_coding/main.go</p>
-            <p data-i18n-html="hero.term.write"><span class="t-accent">⏺</span> 写入 docs/API文档.md <span class="t-dim">+128 −12</span></p>
-            <p data-i18n-html="hero.term.ratelimit"><span class="t-warn">⚠</span> 429 Too Many Requests → 切换备用代理 <span class="t-dim">#2</span></p>
-            <p data-i18n-html="hero.term.archived"><span class="t-ok">✓</span> 会话已存档 <span class="t-dim">session/生成API文档.md</span></p>
+            <p data-i18n-html="hero.term.prompt"><span class="t-dim">→</span> prompt submitted, waiting for first reply…</p>
+            <p data-i18n-html="hero.term.read"><span class="t-accent">⏺</span> Reading prog/lai_coding/main.go</p>
+            <p data-i18n-html="hero.term.write"><span class="t-accent">⏺</span> Writing docs/API文档.md <span class="t-dim">+128 −12</span></p>
+            <p data-i18n-html="hero.term.ratelimit"><span class="t-warn">⚠</span> 429 Too Many Requests → switching backup proxy <span class="t-dim">#2</span></p>
+            <p data-i18n-html="hero.term.archived"><span class="t-ok">✓</span> session archived <span class="t-dim">session/生成API文档.md</span></p>
             <p class="term-caret"><span class="t-dim">$</span> <i class="caret"></i></p>
           </div>
         </div>
@@ -129,10 +125,10 @@
   <!-- 数据条 -->
   <div class="container">
     <div class="stat-strip reveal">
-      <div class="stat"><b data-count="1">0</b><span data-i18n-html="stat.1">同时执行任务数（固定）<br><em>serial = 1</em></span></div>
-      <div class="stat"><b data-count="64">0</b><span data-i18n-html="stat.2">单轮 prompt 工具循环上限<br><em>aicode.max_rounds</em></span></div>
-      <div class="stat"><b data-count="8">0</b><span data-i18n-html="stat.3">限流指数退避重试次数<br><em>retry_backoff = 30s</em></span></div>
-      <div class="stat"><b data-count="27">0</b><span data-i18n-html="stat.4">分钟级限流重试窗口<br><em>单次等待封顶 5m</em></span></div>
+      <div class="stat"><b data-count="1">0</b><span data-i18n-html="stat.1">Concurrent tasks (fixed)<br><em>serial = 1</em></span></div>
+      <div class="stat"><b data-count="64">0</b><span data-i18n-html="stat.2">Tool-loop cap per prompt round<br><em>aicode.max_rounds</em></span></div>
+      <div class="stat"><b data-count="8">0</b><span data-i18n-html="stat.3">Rate-limit backoff retries<br><em>retry_backoff = 30s</em></span></div>
+      <div class="stat"><b data-count="27">0</b><span data-i18n-html="stat.4">Rate-limit retry window<br><em>single wait capped at 5m</em></span></div>
     </div>
   </div>
 </section>
@@ -140,12 +136,10 @@
 <section class="section" id="features">
   <div class="container">
     <header class="section-head reveal">
-      <span class="eyebrow" data-i18n="feat.eyebrow">功能特性</span>
-      <h2 data-i18n="feat.title">为「批量驱动 AI 编码」而生的每一块拼图</h2>
-      <p class="section-sub" data-i18n="feat.sub">
-        从任务编排、引擎实例调度，到实时输出、失败自愈、知识检索与容器构建，
-        你需要的环节都已经在同一个程序里跑通。
-      </p>
+      <span class="eyebrow" data-i18n="feat.eyebrow">Features</span>
+      <h2 data-i18n="feat.title">Every piece you need to batch-drive AI coding</h2>
+      <p class="section-sub" data-i18n="feat.sub">From task orchestration and engine scheduling to live output, failure self-healing,
+        knowledge retrieval and container builds — every step already runs in one program.</p>
     </header>
 
     <div class="cards">
@@ -153,13 +147,13 @@
         <div class="card-ico i-blue">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7" stroke-linecap="round"/><circle cx="18.5" cy="6" r="2"/></svg>
         </div>
-        <h3 data-i18n="feat.c1.title">任务编排与串行执行</h3>
-        <p data-i18n-html="feat.c1.p">项目 / 任务分组 / 任务三层对象；按 <code>order</code> 严格串行执行——本版本同一时间
-          只运行 <strong>1</strong> 个任务（并发数不可配置），支持批量操作与任务模板。</p>
+        <h3 data-i18n="feat.c1.title">Task orchestration & serial execution</h3>
+        <p data-i18n-html="feat.c1.p">Three-level objects: project / task group / task; executed strictly serially by <code>order</code> —
+          this version runs only <strong>1</strong> task at a time (concurrency is not configurable), with batch operations and task templates.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c1.t1">任务 = 标题 + 提示词模板（<code>$TASKDES</code> 代入）</li>
-          <li data-i18n-html="feat.c1.t2">一个项目目录可关联任意多个任务</li>
-          <li data-i18n-html="feat.c1.t3">一键「开始执行 / 停止」，逐个会话 <code>abort</code></li>
+          <li data-i18n-html="feat.c1.t1">Task = title + prompt template (<code>$TASKDES</code> substituted)</li>
+          <li data-i18n-html="feat.c1.t2">A project directory can link any number of tasks</li>
+          <li data-i18n-html="feat.c1.t3">One-click “Start / Stop”, per-session <code>abort</code></li>
         </ul>
       </article>
 
@@ -167,13 +161,13 @@
         <div class="card-ico i-cyan">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.5 6 4-14 2.5 8h5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3 data-i18n="feat.c2.title">SSE 实时输出</h3>
-        <p data-i18n-html="feat.c2.p">任务运行中打开聊天窗口，通过 SSE 实时查看 AI 的文本、工具调用与推理过程，
-          随时介入继续对话，完成后再自动落盘 Markdown 会话存档。</p>
+        <h3 data-i18n="feat.c2.title">SSE real-time output</h3>
+        <p data-i18n-html="feat.c2.p">Open the chat window while a task runs to watch the AI’s text, tool calls and reasoning over SSE in real time;
+          step in to keep the conversation going, then auto-save a Markdown session archive on completion.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c2.t1">每项目目录一个独立引擎实例，同目录任务复用</li>
-          <li data-i18n-html="feat.c2.t2">卡死检测 / 自动续推 / 活跃静默宽限</li>
-          <li data-i18n-html="feat.c2.t3">进程安全：只终止自己启动的实例</li>
+          <li data-i18n-html="feat.c2.t1">One engine instance per project dir; same-dir tasks reuse it</li>
+          <li data-i18n-html="feat.c2.t2">Stuck detection / auto-continue / activity-silence grace</li>
+          <li data-i18n-html="feat.c2.t3">Process safety: only terminates instances it started</li>
         </ul>
       </article>
 
@@ -181,13 +175,14 @@
         <div class="card-ico i-violet">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h6v6H4zM14 11h6v6h-6z" fill="none" stroke-linejoin="round"/><path d="M10 10l4 4" stroke-linecap="round"/></svg>
         </div>
-        <h3 data-i18n="feat.c3.title">备用代理自动切换</h3>
-        <p data-i18n-html="feat.c3.p">任务可配置有序「备用代理列表」：主代理命中限流、额度用尽、首条回复超时或流式挂起时
-          <strong>立即</strong>切换下一个，并在<strong>同一会话</strong>续做，已产出内容不丢失。</p>
+        <h3 data-i18n="feat.c3.title">Automatic backup-proxy failover</h3>
+        <p data-i18n-html="feat.c3.p">Tasks can define an ordered “backup proxy list”: when the primary hits rate limits, runs out of quota,
+          times out on the first reply or stalls mid-stream, it switches to the next <strong>immediately</strong>
+          and continues in the <strong>same session</strong>, so nothing already produced is lost.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c3.t1">provider 定义启动时合并，切换只 PATCH 会话模型</li>
-          <li data-i18n-html="feat.c3.t2">全部代理失败再走指数退避兜底</li>
-          <li data-i18n-html="feat.c3.t3">代理额度统计按实际生效模型记录</li>
+          <li data-i18n-html="feat.c3.t1">Providers merged at startup; switching only PATCHes the session model</li>
+          <li data-i18n-html="feat.c3.t2">Falls back to exponential backoff when all proxies fail</li>
+          <li data-i18n-html="feat.c3.t3">Proxy quota stats recorded by the model actually in effect</li>
         </ul>
       </article>
 
@@ -195,13 +190,14 @@
         <div class="card-ico i-amber">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none"/></svg>
         </div>
-        <h3 data-i18n="feat.c4.title">HTTP 代理池与限流重试</h3>
-        <p data-i18n-html="feat.c4.p">「HTTP 代理列表」不切换模型，只把请求经代理列表依次发出；引擎在单次请求命中
-          429/5xx 或网络错误时自动换下一个代理重试，与模型级重试形成双层自愈。</p>
+        <h3 data-i18n="feat.c4.title">HTTP proxy pool & rate-limit retry</h3>
+        <p data-i18n-html="feat.c4.p">The “HTTP proxy list” does not switch models — it just sends requests through the proxies in order;
+          when a single request hits 429/5xx or a network error the engine retries with the next proxy,
+          forming two layers of self-healing with model-level retries.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c4.t1">支持 <code>http://</code> <code>https://</code> <code>socks5://</code></li>
-          <li data-i18n-html="feat.c4.t2">限流重试：<code>30s×2ⁿ</code> 指数退避，封顶 5 分钟</li>
-          <li data-i18n-html="feat.c4.t3">任务列表显示「备用 N」「HTTP 代理 N」徽标</li>
+          <li data-i18n-html="feat.c4.t1">Supports <code>http://</code> <code>https://</code> <code>socks5://</code></li>
+          <li data-i18n-html="feat.c4.t2">Rate-limit retry: <code>30s×2ⁿ</code> exponential backoff, capped at 5 minutes</li>
+          <li data-i18n-html="feat.c4.t3">Task list shows “backup N” / “HTTP proxy N” badges</li>
         </ul>
       </article>
 
@@ -210,12 +206,12 @@
         <div class="card-ico i-pink">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.4" fill="none"/><circle cx="18" cy="8" r="2.4" fill="none"/><circle cx="9" cy="18" r="2.4" fill="none"/><path d="M8.2 6.6l7.4 1.1M7.4 8l1.2 7.4M16.8 10.2L11 16.4" stroke-linecap="round"/></svg>
         </div>
-        <h3 data-i18n="feat.c5.title">代码图谱 CodeGraph</h3>
-        <p data-i18n-html="feat.c5.p">按「用户 × 项目」独立落盘索引文件与查询库，提供索引后台任务、状态统计、
-          符号搜索、影响面分析与图谱视图，让 AI 与人都能快速定位改动范围。</p>
+        <h3 data-i18n="feat.c5.title">Code graph (CodeGraph)</h3>
+        <p data-i18n-html="feat.c5.p">Per user × project index files and query store; background indexing jobs, status stats,
+          symbol search, impact analysis and a graph view let both AI and humans locate change scope fast.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c5.t1"><code>/api/codegraph/*</code> 与 <code>/tk</code> 变体</li>
-          <li data-i18n-html="feat.c5.t2">jobs 轮询 / 停止 / 删除，索引结果可追溯</li>
+          <li data-i18n-html="feat.c5.t1"><code>/api/codegraph/*</code> and the <code>/tk</code> variant</li>
+          <li data-i18n-html="feat.c5.t2">Poll / stop / delete jobs; index results are traceable</li>
         </ul>
       </article>
 
@@ -223,13 +219,13 @@
         <div class="card-ico i-teal">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none" stroke-linejoin="round"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" fill="none" stroke-linejoin="round"/></svg>
         </div>
-        <h3 data-i18n="feat.c6.title">容器构建环境</h3>
-        <p data-i18n-html="feat.c6.p">程序部署在容器里、容器内没有编译工具链时，通过 Docker Engine 在一次性容器中执行
-          <code>go build</code> / <code>npm run build</code> / <code>pytest</code>，
-          目录 bind mount 共享，产物自动回落到源码目录。</p>
+        <h3 data-i18n="feat.c6.title">Container build environment</h3>
+        <p data-i18n-html="feat.c6.p">When the program runs in a container without a toolchain, it executes <code>go build</code> /
+          <code>npm run build</code> / <code>pytest</code> in one-shot containers via Docker Engine,
+          sharing the directory via bind mount and writing artifacts back to the source dir.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c6.t1">lin_env 环境容器池与 buildenv 快速构建</li>
-          <li data-i18n-html="feat.c6.t2">增量输出轮询、同步 / 异步执行、产物浏览下载</li>
+          <li data-i18n-html="feat.c6.t1">lin_env container pool and buildenv quick builds</li>
+          <li data-i18n-html="feat.c6.t2">Incremental output polling, sync / async runs, artifact browsing & download</li>
         </ul>
       </article>
 
@@ -237,12 +233,12 @@
         <div class="card-ico i-indigo">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13" stroke-linecap="round"/><circle cx="18" cy="12" r="2"/></svg>
         </div>
-        <h3 data-i18n="feat.c7.title">技能与技能市场</h3>
-        <p data-i18n-html="feat.c7.p">全局技能目录 <code>data/skills/</code>，Web 端 zip 导入 / 导出 / 删除 / 预览，
-          安装或删除即时同步到运行中的引擎实例；可对接 SkillHub 技能市场。</p>
+        <h3 data-i18n="feat.c7.title">Skills & skill marketplace</h3>
+        <p data-i18n-html="feat.c7.p">A global skill directory <code>data/skills/</code>; import / export / delete / preview zips in the web UI,
+          with installs and removals synced to running engine instances instantly; can connect to the SkillHub marketplace.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c7.t1">内置 <code>op-task</code>、<code>container-build</code> 等技能模板</li>
-          <li data-i18n-html="feat.c7.t2">技能改动无需重启实例</li>
+          <li data-i18n-html="feat.c7.t1">Built-in skill templates like <code>op-task</code> and <code>container-build</code></li>
+          <li data-i18n-html="feat.c7.t2">Skill changes need no instance restart</li>
         </ul>
       </article>
 
@@ -250,12 +246,12 @@
         <div class="card-ico i-slate">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4" fill="none"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6" fill="none" stroke-linecap="round"/></svg>
         </div>
-        <h3 data-i18n="feat.c8.title">多用户与授权</h3>
-        <p data-i18n-html="feat.c8.p">多用户数据隔离、管理员 / 普通用户角色、登录与授权码保护、<code>x-tk</code>
-          程序化访问令牌，以及不可关闭的强制授权与授权服务器自动激活。</p>
+        <h3 data-i18n="feat.c8.title">Multi-user & licensing</h3>
+        <p data-i18n-html="feat.c8.p">Multi-user data isolation, admin / regular-user roles, login and auth-code protection,
+          <code>x-tk</code> programmatic tokens, plus non-disableable mandatory licensing and license-server auto-activation.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c8.t1">项目、知识库集合、实例按用户隔离</li>
-          <li data-i18n-html="feat.c8.t2">授权文件 / 外部授权服务器两种路线</li>
+          <li data-i18n-html="feat.c8.t1">Projects, knowledge collections and instances isolated per user</li>
+          <li data-i18n-html="feat.c8.t2">Two paths: license file or external license server</li>
         </ul>
       </article>
 
@@ -263,12 +259,12 @@
         <div class="card-ico i-orange">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6" fill="none" stroke-linecap="round"/><path d="M20 4v5h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3 data-i18n="feat.c9.title">运维与集群</h3>
-        <p data-i18n-html="feat.c9.p">在线自更新（二进制 + Web 静态资源）、集群总后台上报、授权服务器客户机、
-          运行日志与代理额度统计，多节点部署也能统一管理。</p>
+        <h3 data-i18n="feat.c9.title">Operations & cluster</h3>
+        <p data-i18n-html="feat.c9.p">Online self-update (binary + web static assets), cluster master reporting, license-server client,
+          run logs and proxy quota stats — multi-node deployments stay centrally managed.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c9.t1"><code>/api/update*</code> 自更新（<code>update_key</code> 鉴权）</li>
-          <li data-i18n-html="feat.c9.t2"><code>cluster.enabled</code> 状态上报与代理调用</li>
+          <li data-i18n-html="feat.c9.t1"><code>/api/update*</code> self-update (<code>update_key</code> auth)</li>
+          <li data-i18n-html="feat.c9.t2"><code>cluster.enabled</code> status reporting and proxy calls</li>
         </ul>
       </article>
 
@@ -276,12 +272,12 @@
         <div class="card-ico i-lime">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h6l2 3h6v11H5z" fill="none" stroke-linejoin="round"/><path d="M9 12.5h6M9 15.5h4" stroke-linecap="round"/></svg>
         </div>
-        <h3 data-i18n="feat.c10.title">文件浏览与终端</h3>
-        <p data-i18n-html="feat.c10.p">以项目目录为根在线浏览 / 上传 / 下载 / 预览 / 编辑 / 删除文件（服务端防路径穿越），
-          并内置 Web bash 命令终端，运维和调试不必再登服务器。</p>
+        <h3 data-i18n="feat.c10.title">File browser & terminal</h3>
+        <p data-i18n-html="feat.c10.p">Browse / upload / download / preview / edit / delete files from the project directory root (server guards against path traversal),
+          with a built-in web bash terminal so you need not SSH in for ops and debugging.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c10.t1"><code>shell.enabled</code> 一键开关终端页</li>
-          <li data-i18n-html="feat.c10.t2">Monaco 编辑器在线改文件</li>
+          <li data-i18n-html="feat.c10.t1"><code>shell.enabled</code> toggles the terminal page</li>
+          <li data-i18n-html="feat.c10.t2">Edit files online with the Monaco editor</li>
         </ul>
       </article>
 
@@ -292,41 +288,41 @@
 <section class="section section-alt" id="workflow">
   <div class="container">
     <header class="section-head reveal">
-      <span class="eyebrow" data-i18n="wf.eyebrow">工作流程</span>
-      <h2 data-i18n="wf.title">六步跑完一轮 AI 批量编码</h2>
-      <p class="section-sub" data-i18n="wf.sub">从建项目到拿到会话存档，全流程都在同一个 Web 控制台里闭环。</p>
+      <span class="eyebrow" data-i18n="wf.eyebrow">Workflow</span>
+      <h2 data-i18n="wf.title">Six steps to complete one round of batch AI coding</h2>
+      <p class="section-sub" data-i18n="wf.sub">From creating a project to getting the session archive, the whole flow closes the loop in one web console.</p>
     </header>
 
     <ol class="steps">
       <li class="reveal">
         <span class="step-no">01</span>
-        <h3 data-i18n="wf.s1.title">建项目</h3>
-        <p data-i18n-html="wf.s1.p">一个项目对应一个磁盘目录；用 Web 表单或 <code>/api/projects</code> 登记目录，并可做目录可用性检查。</p>
+        <h3 data-i18n="wf.s1.title">Create a project</h3>
+        <p data-i18n-html="wf.s1.p">One project maps to one disk directory; register it via the web form or <code>/api/projects</code>, with a directory availability check.</p>
       </li>
       <li class="reveal">
         <span class="step-no">02</span>
-        <h3 data-i18n="wf.s2.title">建分组与任务</h3>
-        <p data-i18n-html="wf.s2.p">任务分组负责串行编排；任务填写标题与提示词模板，选择项目、分组与执行顺序。</p>
+        <h3 data-i18n="wf.s2.title">Create groups & tasks</h3>
+        <p data-i18n-html="wf.s2.p">Task groups handle serial orchestration; a task takes a title and prompt template and picks its project, group and execution order.</p>
       </li>
       <li class="reveal">
         <span class="step-no">03</span>
-        <h3 data-i18n="wf.s3.title">配置 AI 与自愈</h3>
-        <p data-i18n-html="wf.s3.p">选定主代理模型，可选备用代理列表、HTTP 代理列表，以及限流重试与卡死检测参数。</p>
+        <h3 data-i18n="wf.s3.title">Configure AI & self-healing</h3>
+        <p data-i18n-html="wf.s3.p">Pick the primary proxy model, optionally a backup proxy list and HTTP proxy list, plus rate-limit retry and stuck-detection parameters.</p>
       </li>
       <li class="reveal">
         <span class="step-no">04</span>
-        <h3 data-i18n="wf.s4.title">开始执行</h3>
-        <p data-i18n-html="wf.s4.p">点击「开始执行」，系统按并发度调度任务，为每个项目目录拉起独立的 <code>codetools</code> 实例。</p>
+        <h3 data-i18n="wf.s4.title">Start running</h3>
+        <p data-i18n-html="wf.s4.p">Click “Start”: the system schedules tasks by concurrency and spins up a dedicated <code>codetools</code> instance per project directory.</p>
       </li>
       <li class="reveal">
         <span class="step-no">05</span>
-        <h3 data-i18n="wf.s5.title">实时观看与介入</h3>
-        <p data-i18n-html="wf.s5.p">SSE 聊天窗口展示文本 / 工具调用 / 推理过程；可随时停下、继续对话或终止生成。</p>
+        <h3 data-i18n="wf.s5.title">Watch & intervene live</h3>
+        <p data-i18n-html="wf.s5.p">The SSE chat window shows text / tool calls / reasoning; pause, continue the conversation or stop generation at any time.</p>
       </li>
       <li class="reveal">
         <span class="step-no">06</span>
-        <h3 data-i18n="wf.s6.title">存档与检索</h3>
-        <p data-i18n-html="wf.s6.p">任务完成自动导出 Markdown 会话记录；产出可直接进入 CodeGraph 索引，供后续任务检索复用。</p>
+        <h3 data-i18n="wf.s6.title">Archive & search</h3>
+        <p data-i18n-html="wf.s6.p">Finished tasks auto-export Markdown session logs; results can feed the CodeGraph index for later tasks to reuse.</p>
       </li>
     </ol>
   </div>
@@ -336,69 +332,67 @@
 <section class="section" id="architecture">
   <div class="container">
     <header class="section-head reveal">
-      <span class="eyebrow" data-i18n="arch.eyebrow">系统架构</span>
-      <h2 data-i18n="arch.title">一个二进制，托管整套 AI 任务平台</h2>
-      <p class="section-sub" data-i18n-html="arch.sub">
-        后端是 Go 标准库 <code>net/http</code> + 嵌入式 bbolt 单文件数据库；
-        前端 Vue 3 + Vite 构建后由 Go 直接静态托管 —— 部署只需要一个可执行文件与一个数据目录。
-      </p>
+      <span class="eyebrow" data-i18n="arch.eyebrow">Architecture</span>
+      <h2 data-i18n="arch.title">One binary hosts the whole AI task platform</h2>
+      <p class="section-sub" data-i18n-html="arch.sub">The backend is Go’s standard <code>net/http</code> plus an embedded single-file bbolt database;
+        the Vue 3 + Vite frontend is built and served statically by Go — deployment needs just one executable and one data directory.</p>
     </header>
 
     <div class="arch">
       <div class="arch-layers reveal">
         <div class="layer">
-          <div class="layer-tag" data-i18n="arch.frontend">前端</div>
+          <div class="layer-tag" data-i18n="arch.frontend">Frontend</div>
           <div class="layer-body">
-            <span class="chip">Vue 3 + Vite</span><span class="chip" data-i18n="arch.chip.monaco">Monaco 编辑器</span>
-            <span class="chip" data-i18n="arch.chip.sse">SSE 聊天窗口</span><span class="chip" data-i18n="arch.chip.envrun">环境容器执行</span>
-            <span class="chip" data-i18n="arch.chip.buildpage">容器构建页</span><span class="chip" data-i18n="arch.chip.graphpage">代码图谱页</span>
+            <span class="chip">Vue 3 + Vite</span><span class="chip" data-i18n="arch.chip.monaco">Monaco editor</span>
+            <span class="chip" data-i18n="arch.chip.sse">SSE chat window</span><span class="chip" data-i18n="arch.chip.envrun">Env container runs</span>
+            <span class="chip" data-i18n="arch.chip.buildpage">Container build page</span><span class="chip" data-i18n="arch.chip.graphpage">Code graph page</span>
           </div>
         </div>
         <div class="layer">
-          <div class="layer-tag" data-i18n="arch.backend">后端</div>
+          <div class="layer-tag" data-i18n="arch.backend">Backend</div>
           <div class="layer-body">
-            <span class="chip" data-i18n="arch.chip.nethttp">net/http 路由</span><span class="chip" data-i18n="arch.chip.scheduler">任务调度器</span><span class="chip" data-i18n="arch.chip.instmgr">实例管理</span>
-            <span class="chip" data-i18n="arch.chip.proxy">代理切换 / 重试</span><span class="chip" data-i18n="arch.chip.graphsvc">CodeGraph 索引服务</span><span class="chip">CodeGraph</span>
-            <span class="chip" data-i18n="arch.chip.cbuild">容器构建</span><span class="chip" data-i18n="arch.chip.license">授权闸门</span>
+            <span class="chip" data-i18n="arch.chip.nethttp">net/http routing</span><span class="chip" data-i18n="arch.chip.scheduler">Task scheduler</span><span class="chip" data-i18n="arch.chip.instmgr">Instance manager</span>
+            <span class="chip" data-i18n="arch.chip.proxy">Proxy switching / retry</span><span class="chip" data-i18n="arch.chip.graphsvc">CodeGraph index service</span><span class="chip">CodeGraph</span>
+            <span class="chip" data-i18n="arch.chip.cbuild">Container build</span><span class="chip" data-i18n="arch.chip.license">License gate</span>
           </div>
         </div>
         <div class="layer">
-          <div class="layer-tag" data-i18n="arch.storage">存储</div>
+          <div class="layer-tag" data-i18n="arch.storage">Storage</div>
           <div class="layer-body">
             <span class="chip">bbolt tasks.db</span><span class="chip">cfg.yaml</span><span class="chip">data/skills</span>
             <span class="chip">session/*.md</span><span class="chip">data/codegraph</span><span class="chip">ragignore</span>
           </div>
         </div>
         <div class="layer">
-          <div class="layer-tag" data-i18n="arch.engine">引擎</div>
+          <div class="layer-tag" data-i18n="arch.engine">Engine</div>
           <div class="layer-body">
-            <span class="chip" data-i18n="arch.chip.engine_inst">codetools serve（每目录一实例）</span><span class="chip">llama.cpp embeddings</span>
-            <span class="chip" data-i18n="arch.chip.docker">Docker 一次性容器</span><span class="chip" data-i18n="arch.chip.proxypool">代理池 / RetryTransport</span>
+            <span class="chip" data-i18n="arch.chip.engine_inst">codetools serve (one instance per dir)</span><span class="chip">llama.cpp embeddings</span>
+            <span class="chip" data-i18n="arch.chip.docker">Docker one-shot container</span><span class="chip" data-i18n="arch.chip.proxypool">Proxy pool / RetryTransport</span>
           </div>
         </div>
       </div>
 
       <aside class="arch-side reveal">
-        <h3 data-i18n="arch.ports.title">端口规划</h3>
+        <h3 data-i18n="arch.ports.title">Port plan</h3>
         <table class="mini-table">
           <tbody>
             <tr><td><code>base_port</code></td><td>Skill WebUI</td></tr>
-            <tr><td><code>base_port + 1</code></td><td data-i18n="arch.ports.default">默认服务</td></tr>
-            <tr><td><code>base_port + 2…</code></td><td data-i18n="arch.ports.task">任务实例</td></tr>
+            <tr><td><code>base_port + 1</code></td><td data-i18n="arch.ports.default">Default service</td></tr>
+            <tr><td><code>base_port + 2…</code></td><td data-i18n="arch.ports.task">Task instances</td></tr>
           </tbody>
         </table>
-        <h3 data-i18n="arch.tree.title">程序目录（exedir）</h3>
+        <h3 data-i18n="arch.tree.title">Program directory (exedir)</h3>
         <pre class="tree"><code data-i18n-html="arch.tree.code">exedir/
-├── aicode(.exe)       后端可执行程序
-├── static/            前端静态资源
+├── aicode(.exe)       backend executable
+├── static/            frontend static assets
 └── data/
-    ├── bin/codetools  AI 引擎
-    ├── cfg/cfg.yaml   配置（自动生成）
-    ├── aicfg/         .env / .jsonc 环境
-    ├── skills/        全局技能
-    ├── log/           运行日志
-    ├── task/ session/ 会话存档
-    └── tasks.db       bbolt 数据库</code></pre>
+    ├── bin/codetools  AI engine
+    ├── cfg/cfg.yaml   config (auto-generated)
+    ├── aicfg/         .env / .jsonc env
+    ├── skills/        global skills
+    ├── log/           run logs
+    ├── task/ session/ session archives
+    └── tasks.db       bbolt database</code></pre>
       </aside>
     </div>
   </div>
@@ -407,76 +401,76 @@
 <section class="section section-alt" id="quickstart">
   <div class="container">
     <header class="section-head reveal">
-      <span class="eyebrow" data-i18n="qs.eyebrow">快速开始</span>
-      <h2 data-i18n="qs.title">三步启动，十分钟上手</h2>
-      <p class="section-sub" data-i18n="qs.sub">源码构建脚本、直接运行、或者用容器环境编译 —— 挑你顺手的那条路。</p>
+      <span class="eyebrow" data-i18n="qs.eyebrow">Quick Start</span>
+      <h2 data-i18n="qs.title">Start in three steps, up and running in ten minutes</h2>
+      <p class="section-sub" data-i18n="qs.sub">Build from source, run directly, or compile in a container env — pick whichever suits you.</p>
     </header>
 
     <div class="tabs reveal">
-      <div class="tab-list" role="tablist" aria-label="快速开始示例" data-i18n-attr="aria-label:qs.tablist">
-        <button class="tab is-active" role="tab" aria-selected="true" data-tab="build" type="button" data-i18n="qs.tab.build">源码构建</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="run" type="button" data-i18n="qs.tab.run">启动与访问</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="api-demo" type="button" data-i18n="qs.tab.curl">curl 快速体验</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="container" type="button" data-i18n="qs.tab.container">容器内构建</button>
+      <div class="tab-list" role="tablist" aria-label="Quick start examples" data-i18n-attr="aria-label:qs.tablist">
+        <button class="tab is-active" role="tab" aria-selected="true" data-tab="build" type="button" data-i18n="qs.tab.build">Build from source</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="run" type="button" data-i18n="qs.tab.run">Run & access</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="api-demo" type="button" data-i18n="qs.tab.curl">curl quick try</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="container" type="button" data-i18n="qs.tab.container">Build in container</button>
       </div>
 
       <div class="tab-panels">
         <div class="tab-panel is-active" data-panel="build">
-<pre class="code"><code data-i18n-html="qs.code.build"><span class="c"># 依赖：Go ≥ 1.23；构建前端需 Node ≥ 18</span>
+<pre class="code"><code data-i18n-html="qs.code.build"><span class="c"># Requirements: Go ≥ 1.23; Node ≥ 18 to build the frontend</span>
 <span class="c"># Linux / macOS</span>
 ./script/setup.sh
 
 <span class="c"># Windows</span>
 script/setup.bat
 
-<span class="c"># 或者一键构建（自动注入编译版本信息）</span>
-sh ./bld.sh            <span class="c"># 产物到 exe/</span>
-cd prog &amp;&amp; sh bld.sh    <span class="c"># 产物到 prog/exe/</span></code></pre>
+<span class="c"># Or one-shot build (auto-injects version info)</span>
+sh ./bld.sh            <span class="c"># output to exe/</span>
+cd prog &amp;&amp; sh bld.sh    <span class="c"># output to prog/exe/</span></code></pre>
         </div>
 
         <div class="tab-panel" data-panel="run">
-<pre class="code"><code data-i18n-html="qs.code.run"><span class="c"># 启动（Windows 为 aicode.exe；Linux/macOS 为 aicode）</span>
+<pre class="code"><code data-i18n-html="qs.code.run"><span class="c"># Start (aicode.exe on Windows; aicode on Linux/macOS)</span>
 cd prog/exe &amp;&amp; ./aicode.exe
 
-<span class="c"># 浏览器打开控制台</span>
+<span class="c"># Open the console in a browser</span>
 http://127.0.0.1:8090
 
-<span class="c"># 首次启动自动生成 data/cfg/cfg.yaml，可改端口 / 授权码 /</span>
-<span class="c"># aicode.base_port 等；前端开发模式（热更新）：</span>
-cd prog/lai_coding_web &amp;&amp; npm run dev   <span class="c"># 默认 3000，/api 代理到 8090</span></code></pre>
+<span class="c"># First start auto-generates data/cfg/cfg.yaml; edit port / auth code /</span>
+<span class="c"># aicode.base_port etc. Frontend dev mode (hot reload):</span>
+cd prog/lai_coding_web &amp;&amp; npm run dev   <span class="c"># default 3000, /api proxied to 8090</span></code></pre>
         </div>
 
         <div class="tab-panel" data-panel="api-demo">
-<pre class="code"><code data-i18n-html="qs.code.curl"><span class="c"># 创建项目</span>
+<pre class="code"><code data-i18n-html="qs.code.curl"><span class="c"># Create a project</span>
 curl -X POST http://127.0.0.1:8090/api/projects \
   -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{"name":"myapp","directory":"/path/to/myapp"}'</span>
 
-<span class="c"># 创建任务（关联项目，可多个任务指向同一项目）</span>
+<span class="c"># Create a task (link a project; many tasks can point to one project)</span>
 curl -X POST http://127.0.0.1:8090/api/tasks \
   -H <span class="s">"Content-Type: application/json"</span> \
-  -d <span class="s">'{"title":"生成 API 文档","prompt":"请为 backend 包生成 README",</span>
+  -d <span class="s">'{"title":"Generate API docs","prompt":"Write a README for the backend package",</span>
 <span class="s">       "project_id":"project_xxx","order":1}'</span>
 
-<span class="c"># 串行执行 / 只跑某个分组 / 查看状态</span>
+<span class="c"># Run serially / run one group / check status</span>
 curl -X POST http://127.0.0.1:8090/api/tasks/run
 curl -X POST http://127.0.0.1:8090/api/groups/group_xxx/run
 curl http://127.0.0.1:8090/api/tasks/status</code></pre>
         </div>
 
         <div class="tab-panel" data-panel="container">
-<pre class="code"><code data-i18n-html="qs.code.container"><span class="c"># 程序跑在容器里、容器没有 Go/Node 工具链时：</span>
-<span class="c"># 走后台容器环境执行编译（container-build 技能）</span>
-TK=<span class="s">"&lt;程序化访问令牌&gt;"</span>
+<pre class="code"><code data-i18n-html="qs.code.container"><span class="c"># When the program runs in a container that has no Go/Node toolchain:</span>
+<span class="c"># compile via the backend container env (container-build skill)</span>
+TK=<span class="s">"&lt;programmatic access token&gt;"</span>
 BASE=<span class="s">"http://127.0.0.1:8090"</span>
 
-<span class="c"># 在 auto-go 环境里构建（产物写 /out，即落在源码目录）</span>
+<span class="c"># Build in the auto-go env (artifacts go to /out, i.e. the source dir)</span>
 curl -s -X POST -H <span class="s">"x-tk: $TK"</span> -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{"env_id":"auto-go","directory":"/work/myproj",</span>
 <span class="s">       "command":"go build -o /out/app ."}'</span> \
   <span class="s">"$BASE/api/tk/linenv/runs?sync=1"</span>
 
-<span class="c"># 长任务异步提交后轮询增量输出 / 取产物</span>
+<span class="c"># Long tasks: submit async, then poll incremental output / fetch artifacts</span>
 curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/linenv/runs/$RUN_ID?since=0"</span>
 curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/linenv/artifacts?path=build"</span></code></pre>
         </div>
@@ -485,19 +479,19 @@ curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/line
 
     <div class="note-grid">
       <div class="note reveal">
-        <h3 data-i18n="qs.note.env.title">建议的运行环境</h3>
+        <h3 data-i18n="qs.note.env.title">Recommended runtime</h3>
         <ul class="ticks">
-          <li data-i18n-html="qs.note.env.t1">Go ≥ 1.23（后端）/ Node ≥ 18（仅前端构建）</li>
-          <li data-i18n-html="qs.note.env.t2">引擎 <code>codetools</code> 放到 <code>exe/data/bin/codetools</code></li>
-          <li data-i18n-html="qs.note.env.t3">可选：Docker Engine（容器构建 / 打包 / 测试）</li>
+          <li data-i18n-html="qs.note.env.t1">Go ≥ 1.23 (backend) / Node ≥ 18 (frontend build only)</li>
+          <li data-i18n-html="qs.note.env.t2">Place the <code>codetools</code> engine at <code>exe/data/bin/codetools</code></li>
+          <li data-i18n-html="qs.note.env.t3">Optional: Docker Engine (container build / pack / test)</li>
         </ul>
       </div>
       <div class="note reveal">
-        <h3 data-i18n="qs.note.api.title">程序化访问</h3>
+        <h3 data-i18n="qs.note.api.title">Programmatic access</h3>
         <ul class="ticks">
-          <li data-i18n-html="qs.note.api.t1">第三方脚本 / AI Skill 走 <code>/api/tk/*</code> + <code>x-tk</code> 头</li>
-          <li data-i18n-html="qs.note.api.t2">令牌：Web「设置 → Web 访问鉴权 → 程序化访问令牌」</li>
-          <li data-i18n-html="qs.note.api.t3">配套 Skill：<code>op-task</code>、<code>container-build</code></li>
+          <li data-i18n-html="qs.note.api.t1">Third-party scripts / AI skills use <code>/api/tk/*</code> + the <code>x-tk</code> header</li>
+          <li data-i18n-html="qs.note.api.t2">Token: Web “Settings → Web auth → Programmatic access token”</li>
+          <li data-i18n-html="qs.note.api.t3">Companion skills: <code>op-task</code>, <code>container-build</code></li>
         </ul>
       </div>
     </div>
@@ -508,62 +502,60 @@ curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/line
   <div class="container">
     <header class="section-head reveal">
       <span class="eyebrow" data-i18n="api.eyebrow">HTTP API</span>
-      <h2 data-i18n="api.title">从 Web 控制台到自动化脚本，都是同一套接口</h2>
-      <p class="section-sub" data-i18n-html="api.sub">
-        全部接口遵循统一的前缀与错误结构；<code>/api/tk/*</code> 为程序化访问变体，
-        以 <code>x-tk</code> 令牌鉴权，供脚本与 AI Skill 调用。
-      </p>
+      <h2 data-i18n="api.title">One API set from web console to automation scripts</h2>
+      <p class="section-sub" data-i18n-html="api.sub">All endpoints share a unified prefix and error shape; <code>/api/tk/*</code> is the programmatic variant,
+        authenticated by the <code>x-tk</code> token, for scripts and AI skills.</p>
     </header>
 
     <div class="api-grid">
       <div class="api-col reveal">
-        <h3 data-i18n="api.core.title">核心</h3>
+        <h3 data-i18n="api.core.title">Core</h3>
         <ul class="api-list">
-          <li><code>/api/tasks</code><span data-i18n="api.core.tasks">任务管理 / 执行 / 停止 / 输出</span></li>
-          <li><code>/api/projects</code><span data-i18n="api.core.projects">项目与目录检查</span></li>
-          <li><code>/api/groups</code><span data-i18n="api.core.groups">任务分组（串行编排）</span></li>
-          <li><code>/api/templates</code><span data-i18n="api.core.templates">提示词模板</span></li>
-          <li><code>/api/modelconfigs</code><span data-i18n="api.core.modelconfigs">模型配置（数据库）</span></li>
-          <li><code>/api/usermodels</code><span data-i18n="api.core.usermodels">用户模型配置</span></li>
-          <li><code>/api/aicfg</code><span data-i18n="api.core.aicfg">AI 环境（.env / .jsonc）</span></li>
+          <li><code>/api/tasks</code><span data-i18n="api.core.tasks">Task management / run / stop / output</span></li>
+          <li><code>/api/projects</code><span data-i18n="api.core.projects">Projects and directory checks</span></li>
+          <li><code>/api/groups</code><span data-i18n="api.core.groups">Task groups (serial orchestration)</span></li>
+          <li><code>/api/templates</code><span data-i18n="api.core.templates">Prompt templates</span></li>
+          <li><code>/api/modelconfigs</code><span data-i18n="api.core.modelconfigs">Model configs (database)</span></li>
+          <li><code>/api/usermodels</code><span data-i18n="api.core.usermodels">Per-user model configs</span></li>
+          <li><code>/api/aicfg</code><span data-i18n="api.core.aicfg">AI env (.env / .jsonc)</span></li>
         </ul>
       </div>
 
             <div class="api-col reveal">
-        <h3 data-i18n="api.linenv.title">环境容器（构建 / 打包 / 测试）</h3>
+        <h3 data-i18n="api.linenv.title">Env containers (build / pack / test)</h3>
         <ul class="api-list">
-          <li><code>/api/linenv</code><span data-i18n="api.linenv.def">环境定义与预置模板</span></li>
-          <li><code>/api/linenv/runs</code><span data-i18n="api.linenv.runs">容器内执行命令（同步 / 异步）</span></li>
-          <li><code>/api/linenv/artifacts</code><span data-i18n="api.linenv.artifacts">产物浏览与下载</span></li>
-          <li><code>/api/buildenv</code><span data-i18n="api.linenv.buildenv">容器构建环境（兼容入口）</span></li>
+          <li><code>/api/linenv</code><span data-i18n="api.linenv.def">Env definitions and presets</span></li>
+          <li><code>/api/linenv/runs</code><span data-i18n="api.linenv.runs">Run commands in containers (sync / async)</span></li>
+          <li><code>/api/linenv/artifacts</code><span data-i18n="api.linenv.artifacts">Artifact browsing & download</span></li>
+          <li><code>/api/buildenv</code><span data-i18n="api.linenv.buildenv">Container build env (compat entry)</span></li>
         </ul>
       </div>
 
       <div class="api-col reveal">
-        <h3 data-i18n="api.graph.title">代码图谱</h3>
+        <h3 data-i18n="api.graph.title">Code graph</h3>
         <ul class="api-list">
-          <li><code>/api/codegraph/index</code><span data-i18n="api.graph.index">建立索引（后台任务）</span></li>
-          <li><code>/api/codegraph/jobs</code><span data-i18n="api.graph.jobs">任务轮询 / 停止 / 删除</span></li>
-          <li><code>/api/codegraph/status</code><span data-i18n="api.graph.status">索引状态与统计</span></li>
-          <li><code>/api/codegraph/search</code><span data-i18n="api.graph.search">符号搜索</span></li>
-          <li><code>/api/codegraph/impact</code><span data-i18n="api.graph.impact">影响面分析</span></li>
-          <li><code>/api/codegraph/graph</code><span data-i18n="api.graph.view">图谱视图数据</span></li>
-          <li><code>/api/codegraph/file</code><span data-i18n="api.graph.file">文件 / 源码</span></li>
-          <li><code>/api/tk/codegraph/*</code><span data-i18n="api.graph.tk">程序化变体</span></li>
+          <li><code>/api/codegraph/index</code><span data-i18n="api.graph.index">Build index (background job)</span></li>
+          <li><code>/api/codegraph/jobs</code><span data-i18n="api.graph.jobs">Poll / stop / delete jobs</span></li>
+          <li><code>/api/codegraph/status</code><span data-i18n="api.graph.status">Index status & stats</span></li>
+          <li><code>/api/codegraph/search</code><span data-i18n="api.graph.search">Symbol search</span></li>
+          <li><code>/api/codegraph/impact</code><span data-i18n="api.graph.impact">Impact analysis</span></li>
+          <li><code>/api/codegraph/graph</code><span data-i18n="api.graph.view">Graph view data</span></li>
+          <li><code>/api/codegraph/file</code><span data-i18n="api.graph.file">File / source</span></li>
+          <li><code>/api/tk/codegraph/*</code><span data-i18n="api.graph.tk">Programmatic variant</span></li>
         </ul>
       </div>
 
       <div class="api-col reveal">
-        <h3 data-i18n="api.ops.title">运维 / 程序化</h3>
+        <h3 data-i18n="api.ops.title">Ops / programmatic</h3>
         <ul class="api-list">
-          <li><code>/api/tk/linenv</code><span data-i18n="api.ops.linenv">容器环境池（构建 / 测试）</span></li>
-          <li><code>/api/tk/linenv/runs</code><span data-i18n="api.ops.runs">提交执行 + 轮询输出</span></li>
-          <li><code>/api/tk/buildenv/run</code><span data-i18n="api.ops.buildenv">快速一次性构建</span></li>
-          <li><code>/api/skills</code><span data-i18n="api.ops.skills">技能导入 / 导出 / 预览</span></li>
-          <li><code>/api/skillhub/*</code><span data-i18n="api.ops.skillhub">技能市场搜索 / 安装</span></li>
-          <li><code>/api/update*</code><span data-i18n="api.ops.update">在线自更新</span></li>
-          <li><code>/api/runs</code><span data-i18n="api.ops.runslist">执行记录与输出</span></li>
-          <li><code>/api/tk/*</code><span data-i18n="api.ops.tk">tk 令牌鉴权的全部接口</span></li>
+          <li><code>/api/tk/linenv</code><span data-i18n="api.ops.linenv">Container env pool (build / test)</span></li>
+          <li><code>/api/tk/linenv/runs</code><span data-i18n="api.ops.runs">Submit runs + poll output</span></li>
+          <li><code>/api/tk/buildenv/run</code><span data-i18n="api.ops.buildenv">Quick one-shot build</span></li>
+          <li><code>/api/skills</code><span data-i18n="api.ops.skills">Skill import / export / preview</span></li>
+          <li><code>/api/skillhub/*</code><span data-i18n="api.ops.skillhub">Marketplace search / install</span></li>
+          <li><code>/api/update*</code><span data-i18n="api.ops.update">Online self-update</span></li>
+          <li><code>/api/runs</code><span data-i18n="api.ops.runslist">Run records & output</span></li>
+          <li><code>/api/tk/*</code><span data-i18n="api.ops.tk">All endpoints with tk token auth</span></li>
         </ul>
       </div>
     </div>
@@ -574,47 +566,48 @@ curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/line
 <section class="section section-alt" id="faq">
   <div class="container">
     <header class="section-head reveal">
-      <span class="eyebrow" data-i18n="faq.eyebrow">常见问题</span>
-      <h2 data-i18n="faq.title">上手前最常被问到的几件事</h2>
+      <span class="eyebrow" data-i18n="faq.eyebrow">FAQ</span>
+      <h2 data-i18n="faq.title">A few things people ask before starting</h2>
     </header>
 
     <div class="faq">
       <details class="reveal" open>
-        <summary data-i18n="faq.q1">多个任务指向同一个项目目录会互相干扰吗？</summary>
-        <p data-i18n-html="faq.a1">不会。同一个目录的任务<strong>共享同一个引擎实例</strong>（复用端口），
-          不同目录各自启动独立实例；调度上严格串行——本版本同一时间只运行 <strong>1</strong> 个
-          任务（并发度固定为 1，不可配置）。</p>
+        <summary data-i18n="faq.q1">Will multiple tasks pointing at the same project directory interfere with each other?</summary>
+        <p data-i18n-html="faq.a1">No. Tasks in the same directory <strong>share one engine instance</strong> (reusing its port), while different
+          directories each start their own; scheduling is strictly serial — this version runs only <strong>1</strong> task at a
+          time (concurrency fixed at 1, not configurable).</p>
       </details>
       <details class="reveal">
-        <summary data-i18n="faq.q2">模型限流（HTTP 429 / FreeUsageLimitError）会直接让任务失败吗？</summary>
-        <p data-i18n-html="faq.a2">默认不会。命中限流时会在<strong>同一会话</strong>内按指数退避重发一条简短系统提醒续做：
-          间隔 <code>retry_backoff × 2ⁿ</code>（默认 30s 起步，单次封顶 5 分钟），
-          最多 <code>retry_count</code> 次（默认 8，硬上限 12，总窗口约 27 分钟）。
-          若配置了备用代理列表，还会先立即切换到下一个代理。</p>
+        <summary data-i18n="faq.q2">Do model rate limits (HTTP 429 / FreeUsageLimitError) fail the task outright?</summary>
+        <p data-i18n-html="faq.a2">By default, no. On a rate limit it re-sends a short system nudge in the <strong>same session</strong> with exponential
+          backoff to continue: interval <code>retry_backoff × 2ⁿ</code> (starts at 30s, capped at 5 minutes per wait),
+          up to <code>retry_count</code> times (default 8, hard cap 12, ~27 minutes total window).
+          If a backup proxy list is set, it first switches to the next proxy immediately.</p>
       </details>
       <details class="reveal">
-        <summary data-i18n="faq.q3">「备用代理列表」和「HTTP 代理列表」有什么区别？</summary>
-        <p data-i18n-html="faq.a3">备用代理列表切换的是<strong>模型 / 代理提供方</strong>（主代理不可用时换下一个模型配置）；
-          HTTP 代理列表<strong>不换模型</strong>，只是把请求经不同正向代理发出，
-          命中限流或网络错误时由引擎自动换下一个代理重试。</p>
+        <summary data-i18n="faq.q3">What is the difference between the “backup proxy list” and the “HTTP proxy list”?</summary>
+        <p data-i18n-html="faq.a3">The backup proxy list switches the <strong>model / provider</strong> (moves to the next model config when the primary
+          is unavailable); the HTTP proxy list <strong>does not change the model</strong> — it merely sends requests through different
+          forward proxies, and the engine retries with the next proxy on a rate limit or network error.</p>
       </details>
       <details class="reveal">
-        <summary data-i18n="faq.q4">程序部署在容器里、容器没有 Go/Node，怎么编译项目？</summary>
-        <p data-i18n-html="faq.a4">启用容器构建能力后，通过后台的 <code>/api/tk/linenv/runs</code> 在预置环境容器
-          （auto-go / auto-node / auto-python-pytest …）里执行编译测试命令：
-          项目目录 bind mount 进容器，产物写 <code>/out</code> 即回落到源码目录，
-          支持同步取全文或异步轮询增量输出，并可经 artifacts 接口浏览下载。</p>
+        <summary data-i18n="faq.q4">The program runs in a container without Go/Node — how do I compile projects?</summary>
+        <p data-i18n-html="faq.a4">With container builds enabled, run compile/test commands via <code>/api/tk/linenv/runs</code> in preset env containers
+          (auto-go / auto-node / auto-python-pytest …): the project dir is bind-mounted into the container and artifacts
+          written to <code>/out</code> land back in the source dir, with sync full output or async incremental polling,
+          and browsing/download via the artifacts API.</p>
       </details>
       <details class="reveal">
-        <summary data-i18n="faq.q5">本宣传页需要构建吗？</summary>
-        <p data-i18n-html="faq.a5">不需要。 <code>prog/webset/</code> 是零依赖的纯静态站点（HTML + CSS + 原生 JS），
-          直接用浏览器打开 <code>index.html</code> 即可，也可以放进任意 Web 服务器或
-          本程序 <code>static/</code> 目录下托管。</p>
+        <summary data-i18n="faq.q5">Does this landing page need a build step?</summary>
+        <p data-i18n-html="faq.a5">No. <code>prog/webset/</code> is a zero-dependency pure static site (HTML + CSS + vanilla JS);
+          just open <code>index.html</code> in a browser, or host it on any web server or under this program’s
+          <code>static/</code> directory.</p>
       </details>
       <details class="reveal">
-        <summary data-i18n="faq.q6">强制授权可以关闭吗？</summary>
-        <p data-i18n-html="faq.a6">不可以。未安装有效授权文件（<code>data/license.key</code>）时业务功能锁定、前端显示激活界面。
-          激活方式二选一：传统独立授权文件流程，或配置授权服务器自动激活。</p>
+        <summary data-i18n="faq.q6">Can mandatory licensing be turned off?</summary>
+        <p data-i18n-html="faq.a6">No. Without a valid license file (<code>data/license.key</code>) business features are locked and the frontend shows the
+          activation screen. Activate either by the classic standalone license-file flow or by configuring a license server
+          for auto-activation.</p>
       </details>
     </div>
   </div>
@@ -624,33 +617,33 @@ curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/line
 <section class="section" id="docs">
   <div class="container">
     <header class="section-head reveal">
-      <span class="eyebrow" data-i18n="docs.eyebrow">文档导航</span>
-      <h2 data-i18n="docs.title">继续深入了解</h2>
+      <span class="eyebrow" data-i18n="docs.eyebrow">Documentation</span>
+      <h2 data-i18n="docs.title">Dive deeper</h2>
     </header>
     <div class="doc-cards">
       <a class="doc-card reveal" href="../../README.md">
-        <h3>README</h3><p data-i18n="docs.readme.p">项目总览、功能特性与快速开始</p>
+        <h3>README</h3><p data-i18n="docs.readme.p">Project overview, features and quick start</p>
       </a>
       <a class="doc-card reveal" href="../../AGENTS.md">
-        <h3>AGENTS.md</h3><p data-i18n="docs.agents.p">面向 AI 协作的开发约定与能力清单</p>
+        <h3>AGENTS.md</h3><p data-i18n="docs.agents.p">Dev conventions and capability list for AI collaboration</p>
       </a>
       <a class="doc-card reveal" href="../../docs/CHANGELOG.md">
-        <h3>CHANGELOG</h3><p data-i18n="docs.changelog.p">按时间线整理的详细变更记录</p>
+        <h3>CHANGELOG</h3><p data-i18n="docs.changelog.p">Detailed change log in timeline order</p>
       </a>
       <a class="doc-card reveal" href="../../docs/CHANGES.md">
-        <h3>CHANGES</h3><p data-i18n="docs.changes.p">每次任务完成后的原子提交索引</p>
+        <h3>CHANGES</h3><p data-i18n="docs.changes.p">Index of atomic commits after each task</p>
       </a>
       <a class="doc-card reveal" href="../../docs/opencode-api.md">
-        <h3>opencode API</h3><p data-i18n="docs.opencodeapi.p">OpenCode Zen / 引擎接口适配说明</p>
+        <h3>opencode API</h3><p data-i18n="docs.opencodeapi.p">OpenCode Zen / engine API adapter notes</p>
       </a>
       <a class="doc-card reveal" href="../../docs/lin_env/README.md">
-        <h3 data-i18n="docs.linenv.title">环境容器文档</h3><p data-i18n="docs.linenv.p">容器构建 / 打包 / 测试与产物说明</p>
+        <h3 data-i18n="docs.linenv.title">Env container docs</h3><p data-i18n="docs.linenv.p">Container build / pack / test and artifacts</p>
       </a>
       <a class="doc-card reveal" href="../../skill/SKILL.md">
-        <h3>op-task Skill</h3><p data-i18n-html="docs.optask.p">程序化任务 API（<code>x-tk</code> 鉴权）</p>
+        <h3>op-task Skill</h3><p data-i18n-html="docs.optask.p">Programmatic task API (<code>x-tk</code> auth)</p>
       </a>
       <a class="doc-card reveal" href="./README.md">
-        <h3 data-i18n="docs.site.title">本站说明</h3><p data-i18n="docs.site.p">宣传页结构、交互与维护约定</p>
+        <h3 data-i18n="docs.site.title">About this site</h3><p data-i18n="docs.site.p">Structure, interactions and maintenance conventions</p>
       </a>
     </div>
   </div>
@@ -664,21 +657,21 @@ curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/line
       <img src="assets/img/logo.svg" alt="" width="28" height="28">
       <div>
         <strong>aicode</strong>
-        <p data-i18n="footer.tag">Go + Vue 3 的轻量级 AI 任务批处理系统</p>
+        <p data-i18n="footer.tag">A lightweight AI task batch system on Go + Vue 3</p>
       </div>
     </div>
-    <nav class="footer-links" aria-label="页脚导航" data-i18n-attr="aria-label:footer.nav">
-      <a href="#features" data-i18n="nav.features">功能特性</a>
-      <a href="#workflow" data-i18n="nav.workflow">工作流程</a>
-      <a href="#quickstart" data-i18n="nav.quickstart">快速开始</a>
+    <nav class="footer-links" aria-label="Footer navigation" data-i18n-attr="aria-label:footer.nav">
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+      <a href="#quickstart" data-i18n="nav.quickstart">Quick Start</a>
       <a href="#api" data-i18n="nav.api">API</a>
-      <a href="#docs" data-i18n="nav.docs">文档</a>
+      <a href="#docs" data-i18n="nav.docs">Docs</a>
     </nav>
-    <p class="copyright" data-i18n="footer.copyright">本站点为项目宣传页 · 静态资源零依赖 · 可直接打开或托管</p>
+    <p class="copyright" data-i18n="footer.copyright">Project landing page · zero-dependency static assets · open directly or self-host</p>
   </div>
 </footer>
 
-<button class="to-top" id="toTop" type="button" title="回到顶部" aria-label="回到顶部" data-i18n-attr="title:a11y.top,aria-label:a11y.top">
+<button class="to-top" id="toTop" type="button" title="Back to top" aria-label="Back to top" data-i18n-attr="title:a11y.top,aria-label:a11y.top">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
