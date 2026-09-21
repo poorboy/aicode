@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="aicode — a lightweight AI task batch system on Go + Vue 3: projects, serial task scheduling, codetools engine instances, real-time SSE output, automatic multi-proxy failover, code graph and container builds." data-i18n-attr="content:meta.description">
+<meta name="keywords" content="aicode,AI task batch,codetools,opencode,Go,Vue3,code graph,container build" data-i18n-attr="content:meta.keywords">
+<meta name="author" content="aicode" data-i18n-attr="content:meta.author">
+<meta name="theme-color" content="#0b1020">
+<meta property="og:type" content="website">
+<meta property="og:title" content="aicode · AI Task Batch System" data-i18n-attr="content:meta.ogtitle">
+<meta property="og:description" content="Turn “prompt + project directory” into an orchestrated task queue (serial), watch AI output live and auto-archive sessions." data-i18n-attr="content:meta.ogdesc">
+<title data-i18n="meta.title">aicode · AI Task Batch System</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
+
+<!-- ================= 顶部导航 ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="aicode home" data-i18n-attr="aria-label:brand.home">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span class="brand-text">
+        <strong>aicode</strong>
+      </span>
+    </a>
+
+    <nav class="nav" id="primaryNav" aria-label="Main navigation" data-i18n-attr="aria-label:nav.aria">
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+      <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
+      <a href="#quickstart" data-i18n="nav.quickstart">Quick Start</a>
+      <a href="#api" data-i18n="nav.api">API</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a class="nav-cta" href="#quickstart" data-i18n="nav.cta">Get Started</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="lang-btn" id="langToggle" type="button" title="Switch language: 中文 / English" aria-label="Switch language: 中文 / English" data-i18n-attr="title:lang.title,aria-label:lang.title">中文</button>
+      <button class="icon-btn" id="themeToggle" type="button" title="Toggle light / dark theme" aria-label="Toggle theme" data-i18n-attr="title:a11y.theme,aria-label:a11y.themeAria">
+        <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.6v3M12 18.4v3M2.6 12h3M18.4 12h3M5.4 5.4l2.1 2.1M16.5 16.5l2.1 2.1M18.6 5.4l-2.1 2.1M7.5 16.5l-2.1 2.1"/></g></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.4 8.4 0 1 1 9.4 4a6.8 6.8 0 0 0 10.6 10.6z"/></svg>
+      </button>
+      <button class="icon-btn nav-burger" id="navBurger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu" data-i18n-attr="aria-label:a11y.menuOpen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- ================= Hero ================= -->
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy reveal">
+      <span class="pill"><i class="dot"></i> Go 1.23 · Vue 3 · bbolt · SSE</span>
+      <h1 data-i18n-html="hero.title">Turn AI coding into<br>
+        <span class="grad">orchestrated, observable, traceable</span><br>
+        task pipelines</h1>
+      <p class="lede" data-i18n-html="hero.lede"><strong>aicode</strong> is a lightweight AI task batch system. It manages <em>projects</em>,
+        <em>task groups</em> and <em>tasks</em> on the web, turning “prompt + project directory” into a task queue,
+        creating sessions and sending prompts on the <em>codetools</em> (Go rewrite of opencode) engine,
+        streaming AI output live in the browser, and auto-exporting Markdown session archives when tasks finish.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#quickstart">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5 15.5 12 8 18.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="hero.cta.primary">Get Started</span>
+        </a>
+        <a class="btn btn-ghost" href="#features" data-i18n="hero.cta.features">Browse Features</a>
+        <a class="btn btn-ghost" href="../../README.md" data-i18n="hero.cta.readme">Project README</a>
+      </div>
+      <ul class="hero-facts">
+        <li data-i18n-html="hero.facts.1"><b>1</b><span>Project dir = 1 dedicated engine instance</span></li>
+        <li data-i18n-html="hero.facts.2"><b>1</b><span>Tasks run serially (one at a time)</span></li>
+        <li data-i18n-html="hero.facts.3"><b>SSE</b><span>Live stream of text / tool calls / reasoning</span></li>
+      </ul>
+    </div>
+
+    <!-- 终端 / 控制台演示 -->
+    <div class="hero-visual reveal" aria-hidden="true">
+      <div class="window">
+        <div class="window-bar">
+          <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+          <span class="window-title" data-i18n="hero.window.title">aicode · Task execution</span>
+          <span class="window-chips"><i>concurrency=4</i><i>SSE</i></span>
+        </div>
+        <div class="window-body">
+          <div class="task-row">
+            <span class="badge ok">RUNNING</span>
+            <span class="task-name" data-i18n="hero.task.running">Generate API docs</span>
+            <span class="task-meta">project/myapp</span>
+            <span class="task-bar"><i style="width:72%"></i></span>
+          </div>
+          <div class="task-row">
+            <span class="badge wait">QUEUE</span>
+            <span class="task-name" data-i18n="hero.task.queued">Add unit tests</span>
+            <span class="task-meta" data-i18n="hero.task.queued.meta">group: backend</span>
+            <span class="task-bar"><i style="width:18%"></i></span>
+          </div>
+          <div class="task-row">
+            <span class="badge done">DONE</span>
+            <span class="task-name" data-i18n="hero.task.done">Refactor chunk index</span>
+            <span class="task-meta">session/*.md</span>
+            <span class="task-bar"><i style="width:100%"></i></span>
+          </div>
+          <div class="term">
+            <p><span class="t-dim">$</span> aicode serve <span class="t-dim">--project</span> /work/myapp</p>
+            <p><span class="t-ok">✓</span> instance ready <span class="t-dim">port 1002</span></p>
+            <p data-i18n-html="hero.term.prompt"><span class="t-dim">→</span> prompt submitted, waiting for first reply…</p>
+            <p data-i18n-html="hero.term.read"><span class="t-accent">⏺</span> Reading prog/lai_coding/main.go</p>
+            <p data-i18n-html="hero.term.write"><span class="t-accent">⏺</span> Writing docs/API文档.md <span class="t-dim">+128 −12</span></p>
+            <p data-i18n-html="hero.term.ratelimit"><span class="t-warn">⚠</span> 429 Too Many Requests → switching backup proxy <span class="t-dim">#2</span></p>
+            <p data-i18n-html="hero.term.archived"><span class="t-ok">✓</span> session archived <span class="t-dim">session/生成API文档.md</span></p>
+            <p class="term-caret"><span class="t-dim">$</span> <i class="caret"></i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 数据条 -->
+  <div class="container">
+    <div class="stat-strip reveal">
+      <div class="stat"><b data-count="1">0</b><span data-i18n-html="stat.1">Concurrent tasks (fixed)<br><em>serial = 1</em></span></div>
+      <div class="stat"><b data-count="64">0</b><span data-i18n-html="stat.2">Tool-loop cap per prompt round<br><em>aicode.max_rounds</em></span></div>
+      <div class="stat"><b data-count="8">0</b><span data-i18n-html="stat.3">Rate-limit backoff retries<br><em>retry_backoff = 30s</em></span></div>
+      <div class="stat"><b data-count="27">0</b><span data-i18n-html="stat.4">Rate-limit retry window<br><em>single wait capped at 5m</em></span></div>
+    </div>
+  </div>
+</section>
+<!-- ================= 功能特性 ================= -->
+<section class="section" id="features">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="feat.eyebrow">Features</span>
+      <h2 data-i18n="feat.title">Every piece you need to batch-drive AI coding</h2>
+      <p class="section-sub" data-i18n="feat.sub">From task orchestration and engine scheduling to live output, failure self-healing,
+        knowledge retrieval and container builds — every step already runs in one program.</p>
+    </header>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card-ico i-blue">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7" stroke-linecap="round"/><circle cx="18.5" cy="6" r="2"/></svg>
+        </div>
+        <h3 data-i18n="feat.c1.title">Task orchestration & serial execution</h3>
+        <p data-i18n-html="feat.c1.p">Three-level objects: project / task group / task; executed strictly serially by <code>order</code> —
+          this version runs only <strong>1</strong> task at a time (concurrency is not configurable), with batch operations and task templates.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c1.t1">Task = title + prompt template (<code>$TASKDES</code> substituted)</li>
+          <li data-i18n-html="feat.c1.t2">A project directory can link any number of tasks</li>
+          <li data-i18n-html="feat.c1.t3">One-click “Start / Stop”, per-session <code>abort</code></li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-cyan">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.5 6 4-14 2.5 8h5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 data-i18n="feat.c2.title">SSE real-time output</h3>
+        <p data-i18n-html="feat.c2.p">Open the chat window while a task runs to watch the AI’s text, tool calls and reasoning over SSE in real time;
+          step in to keep the conversation going, then auto-save a Markdown session archive on completion.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c2.t1">One engine instance per project dir; same-dir tasks reuse it</li>
+          <li data-i18n-html="feat.c2.t2">Stuck detection / auto-continue / activity-silence grace</li>
+          <li data-i18n-html="feat.c2.t3">Process safety: only terminates instances it started</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-violet">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h6v6H4zM14 11h6v6h-6z" fill="none" stroke-linejoin="round"/><path d="M10 10l4 4" stroke-linecap="round"/></svg>
+        </div>
+        <h3 data-i18n="feat.c3.title">Automatic backup-proxy failover</h3>
+        <p data-i18n-html="feat.c3.p">Tasks can define an ordered “backup proxy list”: when the primary hits rate limits, runs out of quota,
+          times out on the first reply or stalls mid-stream, it switches to the next <strong>immediately</strong>
+          and continues in the <strong>same session</strong>, so nothing already produced is lost.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c3.t1">Providers merged at startup; switching only PATCHes the session model</li>
+          <li data-i18n-html="feat.c3.t2">Falls back to exponential backoff when all proxies fail</li>
+          <li data-i18n-html="feat.c3.t3">Proxy quota stats recorded by the model actually in effect</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-amber">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none"/></svg>
+        </div>
+        <h3 data-i18n="feat.c4.title">HTTP proxy pool & rate-limit retry</h3>
+        <p data-i18n-html="feat.c4.p">The “HTTP proxy list” does not switch models — it just sends requests through the proxies in order;
+          when a single request hits 429/5xx or a network error the engine retries with the next proxy,
+          forming two layers of self-healing with model-level retries.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c4.t1">Supports <code>http://</code> <code>https://</code> <code>socks5://</code></li>
+          <li data-i18n-html="feat.c4.t2">Rate-limit retry: <code>30s×2ⁿ</code> exponential backoff, capped at 5 minutes</li>
+          <li data-i18n-html="feat.c4.t3">Task list shows “backup N” / “HTTP proxy N” badges</li>
+        </ul>
+      </article>
+
+      
+      <article class="card reveal">
+        <div class="card-ico i-pink">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.4" fill="none"/><circle cx="18" cy="8" r="2.4" fill="none"/><circle cx="9" cy="18" r="2.4" fill="none"/><path d="M8.2 6.6l7.4 1.1M7.4 8l1.2 7.4M16.8 10.2L11 16.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3 data-i18n="feat.c5.title">Code graph (CodeGraph)</h3>
+        <p data-i18n-html="feat.c5.p">Per user × project index files and query store; background indexing jobs, status stats,
+          symbol search, impact analysis and a graph view let both AI and humans locate change scope fast.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c5.t1"><code>/api/codegraph/*</code> and the <code>/tk</code> variant</li>
+          <li data-i18n-html="feat.c5.t2">Poll / stop / delete jobs; index results are traceable</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-teal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none" stroke-linejoin="round"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" fill="none" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 data-i18n="feat.c6.title">Container build environment</h3>
+        <p data-i18n-html="feat.c6.p">When the program runs in a container without a toolchain, it executes <code>go build</code> /
+          <code>npm run build</code> / <code>pytest</code> in one-shot containers via Docker Engine,
+          sharing the directory via bind mount and writing artifacts back to the source dir.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c6.t1">lin_env container pool and buildenv quick builds</li>
+          <li data-i18n-html="feat.c6.t2">Incremental output polling, sync / async runs, artifact browsing & download</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-indigo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13" stroke-linecap="round"/><circle cx="18" cy="12" r="2"/></svg>
+        </div>
+        <h3 data-i18n="feat.c7.title">Skills & skill marketplace</h3>
+        <p data-i18n-html="feat.c7.p">A global skill directory <code>data/skills/</code>; import / export / delete / preview zips in the web UI,
+          with installs and removals synced to running engine instances instantly; can connect to the SkillHub marketplace.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c7.t1">Built-in skill templates like <code>op-task</code> and <code>container-build</code></li>
+          <li data-i18n-html="feat.c7.t2">Skill changes need no instance restart</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-slate">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4" fill="none"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3 data-i18n="feat.c8.title">Multi-user & licensing</h3>
+        <p data-i18n-html="feat.c8.p">Multi-user data isolation, admin / regular-user roles, login and auth-code protection,
+          <code>x-tk</code> programmatic tokens, plus non-disableable mandatory licensing and license-server auto-activation.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c8.t1">Projects, knowledge collections and instances isolated per user</li>
+          <li data-i18n-html="feat.c8.t2">Two paths: license file or external license server</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-orange">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6" fill="none" stroke-linecap="round"/><path d="M20 4v5h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 data-i18n="feat.c9.title">Operations & cluster</h3>
+        <p data-i18n-html="feat.c9.p">Online self-update (binary + web static assets), cluster master reporting, license-server client,
+          run logs and proxy quota stats — multi-node deployments stay centrally managed.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c9.t1"><code>/api/update*</code> self-update (<code>update_key</code> auth)</li>
+          <li data-i18n-html="feat.c9.t2"><code>cluster.enabled</code> status reporting and proxy calls</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-ico i-lime">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h6l2 3h6v11H5z" fill="none" stroke-linejoin="round"/><path d="M9 12.5h6M9 15.5h4" stroke-linecap="round"/></svg>
+        </div>
+        <h3 data-i18n="feat.c10.title">File browser & terminal</h3>
+        <p data-i18n-html="feat.c10.p">Browse / upload / download / preview / edit / delete files from the project directory root (server guards against path traversal),
+          with a built-in web bash terminal so you need not SSH in for ops and debugging.</p>
+        <ul class="ticks">
+          <li data-i18n-html="feat.c10.t1"><code>shell.enabled</code> toggles the terminal page</li>
+          <li data-i18n-html="feat.c10.t2">Edit files online with the Monaco editor</li>
+        </ul>
+      </article>
+
+          </div>
+  </div>
+</section>
+<!-- ================= 工作流程 ================= -->
+<section class="section section-alt" id="workflow">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="wf.eyebrow">Workflow</span>
+      <h2 data-i18n="wf.title">Six steps to complete one round of batch AI coding</h2>
+      <p class="section-sub" data-i18n="wf.sub">From creating a project to getting the session archive, the whole flow closes the loop in one web console.</p>
+    </header>
+
+    <ol class="steps">
+      <li class="reveal">
+        <span class="step-no">01</span>
+        <h3 data-i18n="wf.s1.title">Create a project</h3>
+        <p data-i18n-html="wf.s1.p">One project maps to one disk directory; register it via the web form or <code>/api/projects</code>, with a directory availability check.</p>
+      </li>
+      <li class="reveal">
+        <span class="step-no">02</span>
+        <h3 data-i18n="wf.s2.title">Create groups & tasks</h3>
+        <p data-i18n-html="wf.s2.p">Task groups handle serial orchestration; a task takes a title and prompt template and picks its project, group and execution order.</p>
+      </li>
+      <li class="reveal">
+        <span class="step-no">03</span>
+        <h3 data-i18n="wf.s3.title">Configure AI & self-healing</h3>
+        <p data-i18n-html="wf.s3.p">Pick the primary proxy model, optionally a backup proxy list and HTTP proxy list, plus rate-limit retry and stuck-detection parameters.</p>
+      </li>
+      <li class="reveal">
+        <span class="step-no">04</span>
+        <h3 data-i18n="wf.s4.title">Start running</h3>
+        <p data-i18n-html="wf.s4.p">Click “Start”: the system schedules tasks by concurrency and spins up a dedicated <code>codetools</code> instance per project directory.</p>
+      </li>
+      <li class="reveal">
+        <span class="step-no">05</span>
+        <h3 data-i18n="wf.s5.title">Watch & intervene live</h3>
+        <p data-i18n-html="wf.s5.p">The SSE chat window shows text / tool calls / reasoning; pause, continue the conversation or stop generation at any time.</p>
+      </li>
+      <li class="reveal">
+        <span class="step-no">06</span>
+        <h3 data-i18n="wf.s6.title">Archive & search</h3>
+        <p data-i18n-html="wf.s6.p">Finished tasks auto-export Markdown session logs; results can feed the CodeGraph index for later tasks to reuse.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= 系统架构 ================= -->
+<section class="section" id="architecture">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="arch.eyebrow">Architecture</span>
+      <h2 data-i18n="arch.title">One binary hosts the whole AI task platform</h2>
+      <p class="section-sub" data-i18n-html="arch.sub">The backend is Go’s standard <code>net/http</code> plus an embedded single-file bbolt database;
+        the Vue 3 + Vite frontend is built and served statically by Go — deployment needs just one executable and one data directory.</p>
+    </header>
+
+    <div class="arch">
+      <div class="arch-layers reveal">
+        <div class="layer">
+          <div class="layer-tag" data-i18n="arch.frontend">Frontend</div>
+          <div class="layer-body">
+            <span class="chip">Vue 3 + Vite</span><span class="chip" data-i18n="arch.chip.monaco">Monaco editor</span>
+            <span class="chip" data-i18n="arch.chip.sse">SSE chat window</span><span class="chip" data-i18n="arch.chip.envrun">Env container runs</span>
+            <span class="chip" data-i18n="arch.chip.buildpage">Container build page</span><span class="chip" data-i18n="arch.chip.graphpage">Code graph page</span>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="layer-tag" data-i18n="arch.backend">Backend</div>
+          <div class="layer-body">
+            <span class="chip" data-i18n="arch.chip.nethttp">net/http routing</span><span class="chip" data-i18n="arch.chip.scheduler">Task scheduler</span><span class="chip" data-i18n="arch.chip.instmgr">Instance manager</span>
+            <span class="chip" data-i18n="arch.chip.proxy">Proxy switching / retry</span><span class="chip" data-i18n="arch.chip.graphsvc">CodeGraph index service</span><span class="chip">CodeGraph</span>
+            <span class="chip" data-i18n="arch.chip.cbuild">Container build</span><span class="chip" data-i18n="arch.chip.license">License gate</span>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="layer-tag" data-i18n="arch.storage">Storage</div>
+          <div class="layer-body">
+            <span class="chip">bbolt tasks.db</span><span class="chip">cfg.yaml</span><span class="chip">data/skills</span>
+            <span class="chip">session/*.md</span><span class="chip">data/codegraph</span><span class="chip">ragignore</span>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="layer-tag" data-i18n="arch.engine">Engine</div>
+          <div class="layer-body">
+            <span class="chip" data-i18n="arch.chip.engine_inst">codetools serve (one instance per dir)</span><span class="chip">llama.cpp embeddings</span>
+            <span class="chip" data-i18n="arch.chip.docker">Docker one-shot container</span><span class="chip" data-i18n="arch.chip.proxypool">Proxy pool / RetryTransport</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arch-side reveal">
+        <h3 data-i18n="arch.ports.title">Port plan</h3>
+        <table class="mini-table">
+          <tbody>
+            <tr><td><code>base_port</code></td><td>Skill WebUI</td></tr>
+            <tr><td><code>base_port + 1</code></td><td data-i18n="arch.ports.default">Default service</td></tr>
+            <tr><td><code>base_port + 2…</code></td><td data-i18n="arch.ports.task">Task instances</td></tr>
+          </tbody>
+        </table>
+        <h3 data-i18n="arch.tree.title">Program directory (exedir)</h3>
+        <pre class="tree"><code data-i18n-html="arch.tree.code">exedir/
+├── aicode(.exe)       backend executable
+├── static/            frontend static assets
+└── data/
+    ├── bin/codetools  AI engine
+    ├── cfg/cfg.yaml   config (auto-generated)
+    ├── aicfg/         .env / .jsonc env
+    ├── skills/        global skills
+    ├── log/           run logs
+    ├── task/ session/ session archives
+    └── tasks.db       bbolt database</code></pre>
+      </aside>
+    </div>
+  </div>
+</section>
+<!-- ================= 快速开始 ================= -->
+<section class="section section-alt" id="quickstart">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="qs.eyebrow">Quick Start</span>
+      <h2 data-i18n="qs.title">Start in three steps, up and running in ten minutes</h2>
+      <p class="section-sub" data-i18n="qs.sub">Build from source, run directly, or compile in a container env — pick whichever suits you.</p>
+    </header>
+
+    <div class="tabs reveal">
+      <div class="tab-list" role="tablist" aria-label="Quick start examples" data-i18n-attr="aria-label:qs.tablist">
+        <button class="tab is-active" role="tab" aria-selected="true" data-tab="build" type="button" data-i18n="qs.tab.build">Build from source</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="run" type="button" data-i18n="qs.tab.run">Run & access</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="api-demo" type="button" data-i18n="qs.tab.curl">curl quick try</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="container" type="button" data-i18n="qs.tab.container">Build in container</button>
+      </div>
+
+      <div class="tab-panels">
+        <div class="tab-panel is-active" data-panel="build">
+<pre class="code"><code data-i18n-html="qs.code.build"><span class="c"># Requirements: Go ≥ 1.23; Node ≥ 18 to build the frontend</span>
+<span class="c"># Linux / macOS</span>
+./script/setup.sh
+
+<span class="c"># Windows</span>
+script/setup.bat
+
+<span class="c"># Or one-shot build (auto-injects version info)</span>
+sh ./bld.sh            <span class="c"># output to exe/</span>
+cd prog &amp;&amp; sh bld.sh    <span class="c"># output to prog/exe/</span></code></pre>
+        </div>
+
+        <div class="tab-panel" data-panel="run">
+<pre class="code"><code data-i18n-html="qs.code.run"><span class="c"># Start (aicode.exe on Windows; aicode on Linux/macOS)</span>
+cd prog/exe &amp;&amp; ./aicode.exe
+
+<span class="c"># Open the console in a browser</span>
+http://127.0.0.1:8090
+
+<span class="c"># First start auto-generates data/cfg/cfg.yaml; edit port / auth code /</span>
+<span class="c"># aicode.base_port etc. Frontend dev mode (hot reload):</span>
+cd prog/lai_coding_web &amp;&amp; npm run dev   <span class="c"># default 3000, /api proxied to 8090</span></code></pre>
+        </div>
+
+        <div class="tab-panel" data-panel="api-demo">
+<pre class="code"><code data-i18n-html="qs.code.curl"><span class="c"># Create a project</span>
+curl -X POST http://127.0.0.1:8090/api/projects \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"name":"myapp","directory":"/path/to/myapp"}'</span>
+
+<span class="c"># Create a task (link a project; many tasks can point to one project)</span>
+curl -X POST http://127.0.0.1:8090/api/tasks \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"title":"Generate API docs","prompt":"Write a README for the backend package",</span>
+<span class="s">       "project_id":"project_xxx","order":1}'</span>
+
+<span class="c"># Run serially / run one group / check status</span>
+curl -X POST http://127.0.0.1:8090/api/tasks/run
+curl -X POST http://127.0.0.1:8090/api/groups/group_xxx/run
+curl http://127.0.0.1:8090/api/tasks/status</code></pre>
+        </div>
+
+        <div class="tab-panel" data-panel="container">
+<pre class="code"><code data-i18n-html="qs.code.container"><span class="c"># When the program runs in a container that has no Go/Node toolchain:</span>
+<span class="c"># compile via the backend container env (container-build skill)</span>
+TK=<span class="s">"&lt;programmatic access token&gt;"</span>
+BASE=<span class="s">"http://127.0.0.1:8090"</span>
+
+<span class="c"># Build in the auto-go env (artifacts go to /out, i.e. the source dir)</span>
+curl -s -X POST -H <span class="s">"x-tk: $TK"</span> -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"env_id":"auto-go","directory":"/work/myproj",</span>
+<span class="s">       "command":"go build -o /out/app ."}'</span> \
+  <span class="s">"$BASE/api/tk/linenv/runs?sync=1"</span>
+
+<span class="c"># Long tasks: submit async, then poll incremental output / fetch artifacts</span>
+curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/linenv/runs/$RUN_ID?since=0"</span>
+curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/linenv/artifacts?path=build"</span></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-grid">
+      <div class="note reveal">
+        <h3 data-i18n="qs.note.env.title">Recommended runtime</h3>
+        <ul class="ticks">
+          <li data-i18n-html="qs.note.env.t1">Go ≥ 1.23 (backend) / Node ≥ 18 (frontend build only)</li>
+          <li data-i18n-html="qs.note.env.t2">Place the <code>codetools</code> engine at <code>exe/data/bin/codetools</code></li>
+          <li data-i18n-html="qs.note.env.t3">Optional: Docker Engine (container build / pack / test)</li>
+        </ul>
+      </div>
+      <div class="note reveal">
+        <h3 data-i18n="qs.note.api.title">Programmatic access</h3>
+        <ul class="ticks">
+          <li data-i18n-html="qs.note.api.t1">Third-party scripts / AI skills use <code>/api/tk/*</code> + the <code>x-tk</code> header</li>
+          <li data-i18n-html="qs.note.api.t2">Token: Web “Settings → Web auth → Programmatic access token”</li>
+          <li data-i18n-html="qs.note.api.t3">Companion skills: <code>op-task</code>, <code>container-build</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= API ================= -->
+<section class="section" id="api">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="api.eyebrow">HTTP API</span>
+      <h2 data-i18n="api.title">One API set from web console to automation scripts</h2>
+      <p class="section-sub" data-i18n-html="api.sub">All endpoints share a unified prefix and error shape; <code>/api/tk/*</code> is the programmatic variant,
+        authenticated by the <code>x-tk</code> token, for scripts and AI skills.</p>
+    </header>
+
+    <div class="api-grid">
+      <div class="api-col reveal">
+        <h3 data-i18n="api.core.title">Core</h3>
+        <ul class="api-list">
+          <li><code>/api/tasks</code><span data-i18n="api.core.tasks">Task management / run / stop / output</span></li>
+          <li><code>/api/projects</code><span data-i18n="api.core.projects">Projects and directory checks</span></li>
+          <li><code>/api/groups</code><span data-i18n="api.core.groups">Task groups (serial orchestration)</span></li>
+          <li><code>/api/templates</code><span data-i18n="api.core.templates">Prompt templates</span></li>
+          <li><code>/api/modelconfigs</code><span data-i18n="api.core.modelconfigs">Model configs (database)</span></li>
+          <li><code>/api/usermodels</code><span data-i18n="api.core.usermodels">Per-user model configs</span></li>
+          <li><code>/api/aicfg</code><span data-i18n="api.core.aicfg">AI env (.env / .jsonc)</span></li>
+        </ul>
+      </div>
+
+            <div class="api-col reveal">
+        <h3 data-i18n="api.linenv.title">Env containers (build / pack / test)</h3>
+        <ul class="api-list">
+          <li><code>/api/linenv</code><span data-i18n="api.linenv.def">Env definitions and presets</span></li>
+          <li><code>/api/linenv/runs</code><span data-i18n="api.linenv.runs">Run commands in containers (sync / async)</span></li>
+          <li><code>/api/linenv/artifacts</code><span data-i18n="api.linenv.artifacts">Artifact browsing & download</span></li>
+          <li><code>/api/buildenv</code><span data-i18n="api.linenv.buildenv">Container build env (compat entry)</span></li>
+        </ul>
+      </div>
+
+      <div class="api-col reveal">
+        <h3 data-i18n="api.graph.title">Code graph</h3>
+        <ul class="api-list">
+          <li><code>/api/codegraph/index</code><span data-i18n="api.graph.index">Build index (background job)</span></li>
+          <li><code>/api/codegraph/jobs</code><span data-i18n="api.graph.jobs">Poll / stop / delete jobs</span></li>
+          <li><code>/api/codegraph/status</code><span data-i18n="api.graph.status">Index status & stats</span></li>
+          <li><code>/api/codegraph/search</code><span data-i18n="api.graph.search">Symbol search</span></li>
+          <li><code>/api/codegraph/impact</code><span data-i18n="api.graph.impact">Impact analysis</span></li>
+          <li><code>/api/codegraph/graph</code><span data-i18n="api.graph.view">Graph view data</span></li>
+          <li><code>/api/codegraph/file</code><span data-i18n="api.graph.file">File / source</span></li>
+          <li><code>/api/tk/codegraph/*</code><span data-i18n="api.graph.tk">Programmatic variant</span></li>
+        </ul>
+      </div>
+
+      <div class="api-col reveal">
+        <h3 data-i18n="api.ops.title">Ops / programmatic</h3>
+        <ul class="api-list">
+          <li><code>/api/tk/linenv</code><span data-i18n="api.ops.linenv">Container env pool (build / test)</span></li>
+          <li><code>/api/tk/linenv/runs</code><span data-i18n="api.ops.runs">Submit runs + poll output</span></li>
+          <li><code>/api/tk/buildenv/run</code><span data-i18n="api.ops.buildenv">Quick one-shot build</span></li>
+          <li><code>/api/skills</code><span data-i18n="api.ops.skills">Skill import / export / preview</span></li>
+          <li><code>/api/skillhub/*</code><span data-i18n="api.ops.skillhub">Marketplace search / install</span></li>
+          <li><code>/api/update*</code><span data-i18n="api.ops.update">Online self-update</span></li>
+          <li><code>/api/runs</code><span data-i18n="api.ops.runslist">Run records & output</span></li>
+          <li><code>/api/tk/*</code><span data-i18n="api.ops.tk">All endpoints with tk token auth</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="faq.eyebrow">FAQ</span>
+      <h2 data-i18n="faq.title">A few things people ask before starting</h2>
+    </header>
+
+    <div class="faq">
+      <details class="reveal" open>
+        <summary data-i18n="faq.q1">Will multiple tasks pointing at the same project directory interfere with each other?</summary>
+        <p data-i18n-html="faq.a1">No. Tasks in the same directory <strong>share one engine instance</strong> (reusing its port), while different
+          directories each start their own; scheduling is strictly serial — this version runs only <strong>1</strong> task at a
+          time (concurrency fixed at 1, not configurable).</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.q2">Do model rate limits (HTTP 429 / FreeUsageLimitError) fail the task outright?</summary>
+        <p data-i18n-html="faq.a2">By default, no. On a rate limit it re-sends a short system nudge in the <strong>same session</strong> with exponential
+          backoff to continue: interval <code>retry_backoff × 2ⁿ</code> (starts at 30s, capped at 5 minutes per wait),
+          up to <code>retry_count</code> times (default 8, hard cap 12, ~27 minutes total window).
+          If a backup proxy list is set, it first switches to the next proxy immediately.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.q3">What is the difference between the “backup proxy list” and the “HTTP proxy list”?</summary>
+        <p data-i18n-html="faq.a3">The backup proxy list switches the <strong>model / provider</strong> (moves to the next model config when the primary
+          is unavailable); the HTTP proxy list <strong>does not change the model</strong> — it merely sends requests through different
+          forward proxies, and the engine retries with the next proxy on a rate limit or network error.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.q4">The program runs in a container without Go/Node — how do I compile projects?</summary>
+        <p data-i18n-html="faq.a4">With container builds enabled, run compile/test commands via <code>/api/tk/linenv/runs</code> in preset env containers
+          (auto-go / auto-node / auto-python-pytest …): the project dir is bind-mounted into the container and artifacts
+          written to <code>/out</code> land back in the source dir, with sync full output or async incremental polling,
+          and browsing/download via the artifacts API.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.q5">Does this landing page need a build step?</summary>
+        <p data-i18n-html="faq.a5">No. <code>prog/webset/</code> is a zero-dependency pure static site (HTML + CSS + vanilla JS);
+          just open <code>index.html</code> in a browser, or host it on any web server or under this program’s
+          <code>static/</code> directory.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.q6">Can mandatory licensing be turned off?</summary>
+        <p data-i18n-html="faq.a6">No. Without a valid license file (<code>data/license.key</code>) business features are locked and the frontend shows the
+          activation screen. Activate either by the classic standalone license-file flow or by configuring a license server
+          for auto-activation.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 文档导航 ================= -->
+<section class="section" id="docs">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="docs.eyebrow">Documentation</span>
+      <h2 data-i18n="docs.title">Dive deeper</h2>
+    </header>
+    <div class="doc-cards">
+      <a class="doc-card reveal" href="../../README.md">
+        <h3>README</h3><p data-i18n="docs.readme.p">Project overview, features and quick start</p>
+      </a>
+      <a class="doc-card reveal" href="../../AGENTS.md">
+        <h3>AGENTS.md</h3><p data-i18n="docs.agents.p">Dev conventions and capability list for AI collaboration</p>
+      </a>
+      <a class="doc-card reveal" href="../../docs/CHANGELOG.md">
+        <h3>CHANGELOG</h3><p data-i18n="docs.changelog.p">Detailed change log in timeline order</p>
+      </a>
+      <a class="doc-card reveal" href="../../docs/CHANGES.md">
+        <h3>CHANGES</h3><p data-i18n="docs.changes.p">Index of atomic commits after each task</p>
+      </a>
+      <a class="doc-card reveal" href="../../docs/opencode-api.md">
+        <h3>opencode API</h3><p data-i18n="docs.opencodeapi.p">OpenCode Zen / engine API adapter notes</p>
+      </a>
+      <a class="doc-card reveal" href="../../docs/lin_env/README.md">
+        <h3 data-i18n="docs.linenv.title">Env container docs</h3><p data-i18n="docs.linenv.p">Container build / pack / test and artifacts</p>
+      </a>
+      <a class="doc-card reveal" href="../../skill/SKILL.md">
+        <h3>op-task Skill</h3><p data-i18n-html="docs.optask.p">Programmatic task API (<code>x-tk</code> auth)</p>
+      </a>
+      <a class="doc-card reveal" href="./README.md">
+        <h3 data-i18n="docs.site.title">About this site</h3><p data-i18n="docs.site.p">Structure, interactions and maintenance conventions</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/img/logo.svg" alt="" width="28" height="28">
+      <div>
+        <strong>aicode</strong>
+        <p data-i18n="footer.tag">A lightweight AI task batch system on Go + Vue 3</p>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation" data-i18n-attr="aria-label:footer.nav">
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+      <a href="#quickstart" data-i18n="nav.quickstart">Quick Start</a>
+      <a href="#api" data-i18n="nav.api">API</a>
+      <a href="#docs" data-i18n="nav.docs">Docs</a>
+    </nav>
+    <p class="copyright" data-i18n="footer.copyright">Project landing page · zero-dependency static assets · open directly or self-host</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" title="Back to top" aria-label="Back to top" data-i18n-attr="title:a11y.top,aria-label:a11y.top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
