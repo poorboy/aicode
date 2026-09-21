@@ -29,6 +29,7 @@
 
     <nav class="nav" id="primaryNav" aria-label="Main navigation" data-i18n-attr="aria-label:nav.aria">
       <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#why" data-i18n="nav.why">Why aicode</a>
       <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
       <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
       <a href="#quickstart" data-i18n="nav.quickstart">Quick Start</a>
@@ -132,6 +133,79 @@
     </div>
   </div>
 </section>
+<!-- ================= 为什么选择 aicode ================= -->
+<section class="section section-alt" id="why">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow" data-i18n="why.eyebrow">Why aicode</span>
+      <h2 data-i18n="why.title">Self-hosted, orchestrated and self-healing AI coding</h2>
+      <p class="section-sub" data-i18n="why.sub">The pain points of cloud IDEs, editor extensions and CLI agents — and how aicode answers each.</p>
+    </header>
+
+    <div class="why-grid">
+      <div class="why-col why-pains reveal">
+        <h3 data-i18n="why.pains.title">Common drawbacks of other tools</h3>
+        <ul class="why-list">
+          <li data-i18n="why.pains.1">Uncontrollable cost — subscription / usage-based billing balloons for teams and batch jobs.</li>
+          <li data-i18n="why.pains.2">Code leaves your network — source, Git credentials and internal addresses uploaded to third-party clouds.</li>
+          <li data-i18n="why.pains.3">Model lock-in — switching model / provider means reworking the workflow or paying again.</li>
+          <li data-i18n="why.pains.4">Interactive only — one session at a time; you cannot queue many “prompt + directory” jobs to run overnight.</li>
+          <li data-i18n="why.pains.5">Weak self-healing — 429 limits, exhausted quota, stalled processes or first-reply timeouts usually just fail the run.</li>
+          <li data-i18n="why.pains.6">No multi-user — single machine, single user; no isolation, roles, permissions or programmatic tokens.</li>
+          <li data-i18n="why.pains.7">No code understanding — no local code graph or impact analysis; large changes rely on full-text search.</li>
+          <li data-i18n="why.pains.8">Depends on the host toolchain — compiling in a container / server needs your own Go / Node / Python setup.</li>
+          <li data-i18n="why.pains.9">No programmatic API — everything is clicked by hand; hard for backends or AI agents to drive it.</li>
+          <li data-i18n="why.pains.10">Not traceable — output, tool calls and reasoning are not fully logged, so post-mortems are hard.</li>
+        </ul>
+      </div>
+
+      <div class="why-col why-adv reveal">
+        <h3 data-i18n="why.adv.title">What aicode gives you</h3>
+        <ul class="why-list">
+          <li data-i18n="why.adv.1">Fully self-hosted — one binary + one data directory; source and credentials never leave your network.</li>
+          <li data-i18n="why.adv.2">Stable orchestration — project / group / task in three levels, strictly serial, no resource contention.</li>
+          <li data-i18n="why.adv.3">Task watchdog — stuck detection, auto-continue, first-reply timeout and activity-silence grace.</li>
+          <li data-i18n="why.adv.4">Rate-limit healing — exponential backoff retry inside the same session, no full-prompt resend.</li>
+          <li data-i18n="why.adv.5">Two-layer proxies — backup-proxy failover + HTTP proxy pool, without losing output.</li>
+          <li data-i18n="why.adv.6">Live + archived — SSE real-time output; finished tasks auto-export Markdown sessions.</li>
+          <li data-i18n="why.adv.7">Local code graph — CodeGraph symbol search and impact analysis.</li>
+          <li data-i18n="why.adv.8">Container builds — build / test in one-shot containers even with no toolchain.</li>
+          <li data-i18n="why.adv.9">Skills &amp; MCP — zip import / export synced instantly; connect the skill marketplace and MCP tools.</li>
+          <li data-i18n="why.adv.10">Multi-user &amp; licensing — user isolation, roles, x-tk tokens, mandatory licensing.</li>
+          <li data-i18n="why.adv.11">Programmatic API — full /api/tk/* for scripts and AI skills.</li>
+          <li data-i18n="why.adv.12">Ops-friendly — self-update, cluster reporting, run logs and quota stats.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="compare reveal">
+      <h3 data-i18n="why.cmp.title">Capability comparison</h3>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th data-i18n="why.cmp.head.cap">Capability</th>
+              <th data-i18n="why.cmp.head.others">Typical cloud / extension / CLI tools</th>
+              <th class="col-ai" data-i18n="why.cmp.head.aicode">aicode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td data-i18n="why.cmp.c1">Deployment</td><td data-i18n="why.cmp.o1">Cloud SaaS; code uploaded to a third party</td><td class="col-ai" data-i18n="why.cmp.a1">Self-hosted, single binary + data dir</td></tr>
+            <tr><td data-i18n="why.cmp.c2">Billing</td><td data-i18n="why.cmp.o2">Subscription / usage-based</td><td class="col-ai" data-i18n="why.cmp.a2">Bring your own model, controllable cost</td></tr>
+            <tr><td data-i18n="why.cmp.c3">Task queue / serial orchestration</td><td data-i18n="why.cmp.o3">Usually none</td><td class="col-ai" data-i18n="why.cmp.a3">Project / group / task, strictly serial</td></tr>
+            <tr><td data-i18n="why.cmp.c4">Unattended batch runs</td><td data-i18n="why.cmp.o4">Weak</td><td class="col-ai" data-i18n="why.cmp.a4">Queue + watchdog + self-healing</td></tr>
+            <tr><td data-i18n="why.cmp.c5">Rate-limit / stuck self-healing</td><td data-i18n="why.cmp.o5">Basically none</td><td class="col-ai" data-i18n="why.cmp.a5">In-session backoff retry + backup-proxy failover</td></tr>
+            <tr><td data-i18n="why.cmp.c6">Multi-user isolation / licensing</td><td data-i18n="why.cmp.o6">Enterprise plan only</td><td class="col-ai" data-i18n="why.cmp.a6">Built-in users / roles / x-tk / licensing</td></tr>
+            <tr><td data-i18n="why.cmp.c7">Code graph</td><td data-i18n="why.cmp.o7">None</td><td class="col-ai" data-i18n="why.cmp.a7">Built-in CodeGraph</td></tr>
+            <tr><td data-i18n="why.cmp.c8">In-container build</td><td data-i18n="why.cmp.o8">Depends on host</td><td class="col-ai" data-i18n="why.cmp.a8">Built-in lin_env / buildenv</td></tr>
+            <tr><td data-i18n="why.cmp.c9">Programmatic API</td><td data-i18n="why.cmp.o9">Limited</td><td class="col-ai" data-i18n="why.cmp.a9">Full /api/tk/*</td></tr>
+            <tr><td data-i18n="why.cmp.c10">Traceable sessions</td><td data-i18n="why.cmp.o10">Partial</td><td class="col-ai" data-i18n="why.cmp.a10">Markdown session archive</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- ================= 功能特性 ================= -->
 <section class="section" id="features">
   <div class="container">
@@ -139,7 +213,7 @@
       <span class="eyebrow" data-i18n="feat.eyebrow">Features</span>
       <h2 data-i18n="feat.title">Every piece you need to batch-drive AI coding</h2>
       <p class="section-sub" data-i18n="feat.sub">From task orchestration and engine scheduling to live output, failure self-healing,
-        knowledge retrieval and container builds — every step already runs in one program.</p>
+        code graph and container builds — every step already runs in one program.</p>
     </header>
 
     <div class="cards">
@@ -250,7 +324,7 @@
         <p data-i18n-html="feat.c8.p">Multi-user data isolation, admin / regular-user roles, login and auth-code protection,
           <code>x-tk</code> programmatic tokens, plus non-disableable mandatory licensing and license-server auto-activation.</p>
         <ul class="ticks">
-          <li data-i18n-html="feat.c8.t1">Projects, knowledge collections and instances isolated per user</li>
+          <li data-i18n-html="feat.c8.t1">Projects and instances isolated per user</li>
           <li data-i18n-html="feat.c8.t2">Two paths: license file or external license server</li>
         </ul>
       </article>
@@ -609,6 +683,13 @@ curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/line
           activation screen. Activate either by the classic standalone license-file flow or by configuring a license server
           for auto-activation.</p>
       </details>
+      <details class="reveal">
+        <summary data-i18n="faq.q7">How is aicode different from Cursor / Copilot / Claude Code?</summary>
+        <p data-i18n-html="faq.a7">The main differences are <strong>self-hosting, orchestration and self-healing</strong>: aicode runs on your own machine so
+          source and credentials never leave your network; it turns “prompt + project directory” into an unattended task queue; and it
+          retries / resumes automatically on rate limits or stalls. It also ships multi-user isolation, a code graph, container builds and
+          the <code>/api/tk/*</code> programmatic API — things cloud IDEs or editor extensions typically lack.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -662,6 +743,7 @@ curl -s -H <span class="s">"x-tk: $TK"</span> <span class="s">"$BASE/api/tk/line
     </div>
     <nav class="footer-links" aria-label="Footer navigation" data-i18n-attr="aria-label:footer.nav">
       <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#why" data-i18n="nav.why">Why aicode</a>
       <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
       <a href="#quickstart" data-i18n="nav.quickstart">Quick Start</a>
       <a href="#api" data-i18n="nav.api">API</a>

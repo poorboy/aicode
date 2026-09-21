@@ -126,7 +126,7 @@
     });
 
     var observable = targets.filter(function (el) {
-      return ['features', 'workflow', 'architecture', 'quickstart', 'api', 'faq'].indexOf(el.id) !== -1;
+      return ['features', 'why', 'workflow', 'architecture', 'quickstart', 'api', 'faq'].indexOf(el.id) !== -1;
     });
     if (!observable.length) return;
 
