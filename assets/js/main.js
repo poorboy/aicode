@@ -1,14 +1,16 @@
 /* ==========================================================================
-   LAI Coding（Optask）· 项目宣传页交互
-   原生 JS，零依赖。功能：主题切换、移动端菜单、滚动状态、锚点高亮、
-   标签页、光标跟随光效、数字滚动、滚动揭示、回到顶部。
+   aicode · 项目宣传页交互
+   原生 JS，零依赖。功能：主题切换、多语言（中文 / English）、移动端菜单、
+   滚动状态、锚点高亮、标签页、光标跟随光效、数字滚动、滚动揭示、回到顶部。
    ========================================================================== */
 (function () {
   'use strict';
 
   var root = document.documentElement;
-  var STORE_KEY = 'lai-coding-website-theme';
+  var STORE_KEY = 'aicode-website-theme';
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i18n = window.WEBSET_I18N;
+  var lang = 'zh';
 
   /* ---------- 1. 主题 ---------- */
   function applyTheme(theme) {
@@ -36,7 +38,26 @@
     }
   }
 
-  /* ---------- 2. 移动端菜单 ---------- */
+  /* ---------- 2. 多语言（中文 / English） ---------- */
+  function initLang() {
+    if (!i18n) return;
+    lang = i18n.apply(i18n.detect());
+
+    var btn = document.getElementById('langToggle');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        lang = lang === 'zh' ? 'en' : 'zh';
+        i18n.apply(lang);
+        var burger = document.getElementById('navBurger');
+        var nav = document.getElementById('primaryNav');
+        if (burger && nav) {
+          burger.setAttribute('aria-label', i18n.t(lang, nav.classList.contains('is-open') ? 'a11y.menuClose' : 'a11y.menuOpen'));
+        }
+      });
+    }
+  }
+
+  /* ---------- 3. 移动端菜单 ---------- */
   function initNav() {
     var burger = document.getElementById('navBurger');
     var nav = document.getElementById('primaryNav');
@@ -45,7 +66,8 @@
     function setOpen(open) {
       nav.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      burger.setAttribute('aria-label', open ? '收起菜单' : '展开菜单');
+      var key = open ? 'a11y.menuClose' : 'a11y.menuOpen';
+      burger.setAttribute('aria-label', i18n ? i18n.t(lang, key) : (open ? '收起菜单' : '展开菜单'));
     }
 
     burger.addEventListener('click', function () {
@@ -67,7 +89,7 @@
     });
   }
 
-  /* ---------- 3. 滚动状态 + 回到顶部 ---------- */
+  /* ---------- 4. 滚动状态 + 回到顶部 ---------- */
   function initScroll() {
     var header = document.getElementById('siteHeader');
     var toTop = document.getElementById('toTop');
@@ -88,7 +110,7 @@
     }
   }
 
-  /* ---------- 4. 当前锚点高亮 ---------- */
+  /* ---------- 5. 当前锚点高亮 ---------- */
   function initActiveLink() {
     if (!('IntersectionObserver' in window)) return;
     var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
@@ -123,7 +145,7 @@
     observable.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- 5. 快速开始标签页 ---------- */
+  /* ---------- 6. 快速开始标签页 ---------- */
   function initTabs() {
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
     if (!tabs.length) return;
@@ -153,7 +175,7 @@
     });
   }
 
-  /* ---------- 6. 卡片光标跟随光效 ---------- */
+  /* ---------- 7. 卡片光标跟随光效 ---------- */
   function initCardGlow() {
     if (reduceMotion) return;
     document.querySelectorAll('.card').forEach(function (card) {
@@ -165,7 +187,7 @@
     });
   }
 
-  /* ---------- 7. 数字滚动 ---------- */
+  /* ---------- 8. 数字滚动 ---------- */
   function initCounters() {
     var nums = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
     if (!nums.length) return;
@@ -199,7 +221,7 @@
     nums.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- 8. 滚动揭示 ---------- */
+  /* ---------- 9. 滚动揭示 ---------- */
   function initReveal() {
     var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
     if (!items.length) return;
@@ -227,6 +249,7 @@
   /* ---------- 启动 ---------- */
   function boot() {
     initTheme();
+    initLang();
     initNav();
     initScroll();
     initActiveLink();
